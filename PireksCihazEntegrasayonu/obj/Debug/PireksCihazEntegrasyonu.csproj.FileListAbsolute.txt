@@ -1,0 +1,10 @@
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\PireksCihazEntegrasyonu.exe.config
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\PireksCihazEntegrasyonu.exe
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\PireksCihazEntegrasyonu.pdb
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csprojAssemblyReference.cache
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.Properties.Resources.resources
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csproj.GenerateResource.cache
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csproj.CoreCompileInputs.cache
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.exe
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.pdb
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasayonu.MainForm.resources
