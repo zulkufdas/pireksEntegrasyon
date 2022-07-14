@@ -23,15 +23,23 @@ namespace PireksCihazEntegrasyonu
 
 
         void LoadSettings()
-        {
-            if (File.Exists(settingFile))
+        { try
             {
-                var jsonContent = File.ReadAllText(settingFile);
-                Configuration = Newtonsoft.Json.JsonConvert.DeserializeObject<Configuration>(jsonContent);
+                if (File.Exists(settingFile))
+                {
+                    var jsonContent = File.ReadAllText(settingFile);
+                    Configuration = Newtonsoft.Json.JsonConvert.DeserializeObject<Configuration>(jsonContent);
+                }
+            }
+            finally {
+                if (Configuration == null) {
+                    Configuration = new Configuration();
+                    Configuration.Settings = new Devices.Base.Configs.SerialDeviceConfig();
+                }
             }
         }
 
-        void SaveSettings()
+        internal void SaveSettings()
         {
             var configurationContent = Newtonsoft.Json.JsonConvert.SerializeObject(Configuration);
             File.WriteAllText(settingFile, configurationContent);

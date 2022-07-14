@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PireksCihazEntegrasyonu.Devices;
+using PireksCihazEntegrasyonu.DeviceUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,7 +61,11 @@ namespace PireksCihazEntegrasyonu
             // Test if the About item was selected from the system menu
             if ((m.Msg == WM_SYSCOMMAND) && ((int)m.WParam == SYSMENU_ABOUT_ID))
             {
-                MessageBox.Show("Ayarlar");
+                //MessageBox.Show("Ayarlar");
+                using (DeviceSettingsForm deviceSettingsForm = new DeviceSettingsForm())
+                {
+                    deviceSettingsForm.ShowDialog();
+                }
             }
         }
 
@@ -74,9 +80,20 @@ namespace PireksCihazEntegrasyonu
         {
             var deviceMapping = Settings.Instance.GetDeviceMap();
 
-            if (deviceMapping == null) {
-                MessageBox.Show("Tanımlı Cihaz Bulunamadı!","Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            if (deviceMapping == null)
+            {
+                MessageBox.Show("Tanımlı Cihaz Bulunamadı!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            CreateDeviceUI(deviceMapping);
+
+        }
+
+        private void CreateDeviceUI(DeviceMap deviceMapping)
+        {
+            var deviceUserControl = (UserControl)Activator.CreateInstance(deviceMapping.UserControl);
+            panelDevice.Controls.Add(deviceUserControl);
+            deviceUserControl.Dock = DockStyle.Fill;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

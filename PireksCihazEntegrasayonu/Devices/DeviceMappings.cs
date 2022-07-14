@@ -18,7 +18,6 @@ namespace PireksCihazEntegrasyonu.Devices
             {
                 Key = "TenaylarLoadLine3",
                 Name = "Tenaylar Load Line 3",
-                Device = typeof(TunaylarLoadLine3),
                 UserControl = typeof(TunaylarLoadLine3UserControl)
             });
         }
@@ -35,7 +34,6 @@ namespace PireksCihazEntegrasyonu.Devices
     {
         public string Key { get; set; }
         public string Name { get; set; }
-        public Type Device { get; set; }
         public Type UserControl { get; set; }
     }
 }

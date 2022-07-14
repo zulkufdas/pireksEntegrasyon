@@ -19,3 +19,4 @@ C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayon
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.DeviceUI.TunaylarLoadLine3UserControl.resources
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.MainForm.resources
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.DeviceUI.DeviceSettingsForm.resources

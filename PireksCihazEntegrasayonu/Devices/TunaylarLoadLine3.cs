@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PireksCihazEntegrasyonu.Devices
 {
-    internal class TunaylarLoadLine3 : SerialPortDevice
+    public class TunaylarLoadLine3 : SerialPortDevice
     {
         public override void Receive(string message)
         {

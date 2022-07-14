@@ -2,7 +2,7 @@
 
 namespace PireksCihazEntegrasyonu.Devices.Base
 {
-    internal abstract class BaseDevice <DeviceConfigType> where DeviceConfigType : BaseDeviceConfig
+    public abstract class BaseDevice <DeviceConfigType> where DeviceConfigType : BaseDeviceConfig
     {
         public DeviceConfigType Configurations { get; set; }
 

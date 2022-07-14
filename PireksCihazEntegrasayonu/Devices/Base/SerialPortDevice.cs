@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace PireksCihazEntegrasyonu.Devices.Base
 {
-    internal class SerialPortDevice : BaseDevice<SerialDeviceConfig>
+    public class SerialPortDevice : BaseDevice<SerialDeviceConfig>
     {
         SerialPort port;
         Task listenerTask = null;
