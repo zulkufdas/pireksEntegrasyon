@@ -1,6 +1,6 @@
 ﻿using System.IO.Ports;
 
-namespace PireksCihazEntegrasyonu.Devices.Configs
+namespace PireksCihazEntegrasyonu.Devices.Base.Configs
 {
     internal class SerialDeviceConfig : BaseDeviceConfig
     {

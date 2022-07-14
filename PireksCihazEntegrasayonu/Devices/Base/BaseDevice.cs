@@ -1,11 +1,6 @@
-﻿using PireksCihazEntegrasyonu.Devices.Configs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PireksCihazEntegrasyonu.Devices.Base.Configs;
 
-namespace PireksCihazEntegrasyonu.Devices
+namespace PireksCihazEntegrasyonu.Devices.Base
 {
     internal abstract class BaseDevice <DeviceConfigType> where DeviceConfigType : BaseDeviceConfig
     {

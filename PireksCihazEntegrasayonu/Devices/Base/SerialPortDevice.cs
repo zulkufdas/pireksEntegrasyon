@@ -1,12 +1,8 @@
-﻿using PireksCihazEntegrasyonu.Devices.Configs;
-using System;
-using System.Collections.Generic;
+﻿using PireksCihazEntegrasyonu.Devices.Base.Configs;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace PireksCihazEntegrasyonu.Devices
+namespace PireksCihazEntegrasyonu.Devices.Base
 {
     internal class SerialPortDevice : BaseDevice<SerialDeviceConfig>
     {
