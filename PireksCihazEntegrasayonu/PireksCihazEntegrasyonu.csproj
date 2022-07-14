@@ -70,7 +70,9 @@
     <Compile Include="Devices\Base\BaseDevice.cs" />
     <Compile Include="Devices\Base\Configs\BaseDeviceConfig.cs" />
     <Compile Include="Devices\Base\Configs\SerialDeviceConfig.cs" />
+    <Compile Include="Devices\Base\Configuration.cs" />
     <Compile Include="Devices\Base\SerialPortDevice.cs" />
+    <Compile Include="Devices\DeviceMappings.cs" />
     <Compile Include="Devices\TunaylarLoadLine3.cs" />
     <Compile Include="DeviceUI\TunaylarLoadLine3UserControl.cs">
       <SubType>UserControl</SubType>
@@ -86,6 +88,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="DeviceUI\TunaylarLoadLine3UserControl.resx">
       <DependentUpon>TunaylarLoadLine3UserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,9 +131,7 @@
   <ItemGroup>
     <Content Include="app.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,4 +1,4 @@
-﻿namespace PireksCihazEntegrasayonu
+﻿namespace PireksCihazEntegrasyonu
 {
     partial class MainForm
     {
@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelDevice = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,14 +57,27 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panelDevice
+            // 
+            this.panelDevice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDevice.Location = new System.Drawing.Point(0, 84);
+            this.panelDevice.Name = "panelDevice";
+            this.panelDevice.Size = new System.Drawing.Size(800, 327);
+            this.panelDevice.TabIndex = 1;
+            this.panelDevice.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.ClientSize = new System.Drawing.Size(800, 411);
+            this.Controls.Add(this.panelDevice);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cihaz Entegrasyonu";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -75,6 +89,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelDevice;
     }
 }
 

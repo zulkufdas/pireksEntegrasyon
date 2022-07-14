@@ -2,7 +2,7 @@
 
 namespace PireksCihazEntegrasyonu.Devices.Base.Configs
 {
-    internal class SerialDeviceConfig : BaseDeviceConfig
+    public class SerialDeviceConfig : BaseDeviceConfig
     {
         //[DisplayName("Port Adı")]
         public string PortName { get; set; }

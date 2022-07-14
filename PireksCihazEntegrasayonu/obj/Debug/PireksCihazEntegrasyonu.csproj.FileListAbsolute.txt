@@ -7,7 +7,6 @@ C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayon
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csproj.CoreCompileInputs.cache
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.exe
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.pdb
-C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasayonu.MainForm.resources
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\NLog.config
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\EntityFramework.dll
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\EntityFramework.SqlServer.dll
@@ -19,3 +18,4 @@ C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayon
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.DeviceUI.TunaylarLoadLine3UserControl.resources
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.MainForm.resources
