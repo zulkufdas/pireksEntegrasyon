@@ -1,1 +1,1 @@
-{"DeviceKey":"TenaylarLoadLine3","Settings":{"PortName":"COM3","BaudRate":9600,"Parity":0,"DataBits":8,"StopBits":1}}
+{"DeviceKey":"TenaylarLoadLine3","Settings":{"PortName":"COM1","BaudRate":9600,"Parity":0,"DataBits":8,"StopBits":1}}

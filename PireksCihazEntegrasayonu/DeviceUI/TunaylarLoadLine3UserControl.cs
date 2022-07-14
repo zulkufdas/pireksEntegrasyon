@@ -37,11 +37,13 @@ namespace PireksCihazEntegrasyonu.DeviceUI
 
         private void Device_Result(object sender, TunaylarLoadLine3Result e)
         {
-            if (e.IsDara)
-                textBoxDara.Text = e.Sonuc;
-            else
-                textBoxBrut.Text = e.Sonuc;
+            this.Invoke( new Action(() => {
+                if (e.IsDara)
+                    textBoxDara.Text = e.Sonuc;
+                else
+                    textBoxBrut.Text = e.Sonuc;
 
+            }));            
         }
 
         protected override void DestroyHandle()
@@ -62,11 +64,13 @@ namespace PireksCihazEntegrasyonu.DeviceUI
 
         private void textBoxBrut_TextChanged(object sender, EventArgs e)
         {
+            labelGenelNetToplamBilgi.Text = $"{textBoxBrut.Text} KG.";
             NetHesapla();
         }
 
         private void textBoxDara_TextChanged(object sender, EventArgs e)
         {
+            labelGenelNetToplamBilgi.Text = $"{textBoxDara.Text} KG.";
             NetHesapla();
         }
 

@@ -11,13 +11,29 @@ namespace PireksCihazEntegrasyonu.Devices
     {
         public event EventHandler<TunaylarLoadLine3Result> Result;
         bool isDara = false;
+        string mainMessage = "";
         public override void Receive(string message)
         {
             base.Receive(message);
 
+            mainMessage += message;
+
+            var stxIndex = mainMessage.IndexOf(SinyalListesi.CharSinyalListesi.STX);
+            var etxIndex = mainMessage.IndexOf(SinyalListesi.CharSinyalListesi.ETX);
+            string sonuc = null;
+            if (stxIndex > -1 && etxIndex > -1)
+            {
+                var msg = mainMessage.Substring(stxIndex + 1, etxIndex - stxIndex);
+                sonuc = msg.Substring(25, 5);
+                sonuc = sonuc.Trim('0');
+                mainMessage = string.Empty;
+            }
+            else
+                return;
+
             Result?.Invoke(this, new TunaylarLoadLine3Result
             {
-                Sonuc = "",
+                Sonuc = sonuc,
                 IsDara = isDara
             });
         }

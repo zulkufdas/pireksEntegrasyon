@@ -72,9 +72,6 @@ namespace PireksCihazEntegrasyonu
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-
-            throw new Exception("hata oldu");
-
             LoadDevice();
         }
 
@@ -88,7 +85,6 @@ namespace PireksCihazEntegrasyonu
             }
 
             CreateDeviceUI(deviceMapping);
-
         }
 
         private void CreateDeviceUI(DeviceMap deviceMapping)

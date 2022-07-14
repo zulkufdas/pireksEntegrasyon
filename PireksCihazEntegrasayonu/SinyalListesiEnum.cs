@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Base
+﻿namespace PireksCihazEntegrasyonu
 {
-    
+
     public enum SinyalListesiEnum
     {        
             NULL = 0,
