@@ -9,12 +9,17 @@ namespace PireksCihazEntegrasyonu.Devices.Base
         SerialPort port;
         Task listenerTask = null;
 
+
         public override void Receive(string message)
         {
-
+            Logger.WriteInfo("Receive =>" + message);
         }
 
-        public override void Send(string message) => port.Write(message);
+        public override void Send(string message)
+        {
+            port.Write(message);
+            Logger.WriteInfo("Send =>" + message);
+        }
 
         public override void Start()
         {

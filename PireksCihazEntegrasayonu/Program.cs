@@ -14,9 +14,17 @@ namespace PireksCihazEntegrasyonu
         [STAThread]
         static void Main()
         {
+            Application.ThreadException += Application_ThreadException;
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+        }
+
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Logger.WriteError(e.Exception);
+            MessageBox.Show(e.Exception.Message, "Hata Oluştu!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

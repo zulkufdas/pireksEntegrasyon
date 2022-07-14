@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="FormatComPortListConverter.cs" />
     <Compile Include="FormatDeviceListConverter.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

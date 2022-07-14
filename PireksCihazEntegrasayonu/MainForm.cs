@@ -73,6 +73,8 @@ namespace PireksCihazEntegrasyonu
         {
             base.OnShown(e);
 
+            throw new Exception("hata oldu");
+
             LoadDevice();
         }
 

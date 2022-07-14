@@ -34,9 +34,9 @@
             this.buttonDaraKaydet = new System.Windows.Forms.Button();
             this.buttonTartimiKaydet = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxNet = new System.Windows.Forms.TextBox();
+            this.textBoxDara = new System.Windows.Forms.TextBox();
+            this.textBoxBrut = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -90,6 +90,7 @@
             this.buttonDaraKaydet.TabIndex = 0;
             this.buttonDaraKaydet.Text = "Dara Kaydet";
             this.buttonDaraKaydet.UseVisualStyleBackColor = false;
+            this.buttonDaraKaydet.Click += new System.EventHandler(this.buttonDaraKaydet_Click);
             // 
             // buttonTartimiKaydet
             // 
@@ -103,15 +104,16 @@
             this.buttonTartimiKaydet.TabIndex = 1;
             this.buttonTartimiKaydet.Text = "Tartımı Kaydet";
             this.buttonTartimiKaydet.UseVisualStyleBackColor = false;
+            this.buttonTartimiKaydet.Click += new System.EventHandler(this.buttonTartimiKaydet_Click);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 9F));
-            this.tableLayoutPanel1.Controls.Add(this.textBox6, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxNet, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxDara, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxBrut, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
@@ -126,43 +128,46 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(380, 136);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // textBox6
+            // textBoxNet
             // 
-            this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox6.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox6.Location = new System.Drawing.Point(201, 84);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(176, 37);
-            this.textBox6.TabIndex = 5;
-            this.textBox6.Text = "80,00";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxNet.BackColor = System.Drawing.Color.MistyRose;
+            this.textBoxNet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxNet.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBoxNet.Location = new System.Drawing.Point(201, 84);
+            this.textBoxNet.Multiline = true;
+            this.textBoxNet.Name = "textBoxNet";
+            this.textBoxNet.Size = new System.Drawing.Size(176, 37);
+            this.textBoxNet.TabIndex = 5;
+            this.textBoxNet.Text = "80,00";
+            this.textBoxNet.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox4
+            // textBoxDara
             // 
-            this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox4.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.textBox4.Location = new System.Drawing.Point(201, 44);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(176, 34);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "20,00";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxDara.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDara.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBoxDara.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.textBoxDara.Location = new System.Drawing.Point(201, 44);
+            this.textBoxDara.Multiline = true;
+            this.textBoxDara.Name = "textBoxDara";
+            this.textBoxDara.Size = new System.Drawing.Size(176, 34);
+            this.textBoxDara.TabIndex = 3;
+            this.textBoxDara.Text = "20,00";
+            this.textBoxDara.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxDara.TextChanged += new System.EventHandler(this.textBoxDara_TextChanged);
             // 
-            // textBox1
+            // textBoxBrut
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.textBox1.Location = new System.Drawing.Point(201, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 35);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "100,00";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxBrut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxBrut.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxBrut.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.textBoxBrut.Location = new System.Drawing.Point(201, 3);
+            this.textBoxBrut.Multiline = true;
+            this.textBoxBrut.Name = "textBoxBrut";
+            this.textBoxBrut.Size = new System.Drawing.Size(176, 35);
+            this.textBoxBrut.TabIndex = 0;
+            this.textBoxBrut.Text = "100,00";
+            this.textBoxBrut.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxBrut.TextChanged += new System.EventHandler(this.textBoxBrut_TextChanged);
             // 
             // label2
             // 
@@ -250,9 +255,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxNet;
+        private System.Windows.Forms.TextBox textBoxDara;
+        private System.Windows.Forms.TextBox textBoxBrut;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
