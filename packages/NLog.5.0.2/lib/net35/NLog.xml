@@ -2784,46 +2784,6 @@
             <param name="fallback">Fallback value to return in case of exception.</param>
             <returns>Result returned by the provided function or fallback value in case of exception.</returns>
         </member>
-        <member name="M:NLog.ISuppress.Swallow(System.Threading.Tasks.Task)">
-            <summary>
-            Logs an exception is logged at <c>Error</c> level if the provided task does not run to completion.
-            </summary>
-            <param name="task">The task for which to log an error if it does not run to completion.</param>
-            <remarks>This method is useful in fire-and-forget situations, where application logic does not depend on completion of task. This method is avoids C# warning CS4014 in such situations.</remarks>
-        </member>
-        <member name="M:NLog.ISuppress.SwallowAsync(System.Threading.Tasks.Task)">
-            <summary>
-            Returns a task that completes when a specified task to completes. If the task does not run to completion, an exception is logged at <c>Error</c> level. The returned task always runs to completion.
-            </summary>
-            <param name="task">The task for which to log an error if it does not run to completion.</param>
-            <returns>A task that completes in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state when <paramref name="task"/> completes.</returns>
-        </member>
-        <member name="M:NLog.ISuppress.SwallowAsync(System.Func{System.Threading.Tasks.Task})">
-            <summary>
-            Runs async action. If the action throws, the exception is logged at <c>Error</c> level. The exception is not propagated outside of this method.
-            </summary>
-            <param name="asyncAction">Async action to execute.</param>
-            <returns>A task that completes in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state when <paramref name="asyncAction"/> completes.</returns>
-        </member>
-        <member name="M:NLog.ISuppress.SwallowAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
-            <summary>
-            Runs the provided async function and returns its result. If the task does not run to completion, an exception is logged at <c>Error</c> level.
-            The exception is not propagated outside of this method; a default value is returned instead.
-            </summary>
-            <typeparam name="TResult">Return type of the provided function.</typeparam>
-            <param name="asyncFunc">Async function to run.</param>
-            <returns>A task that represents the completion of the supplied task. If the supplied task ends in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state, the result of the new task will be the result of the supplied task; otherwise, the result of the new task will be the default value of type <typeparamref name="TResult"/>.</returns>
-        </member>
-        <member name="M:NLog.ISuppress.SwallowAsync``1(System.Func{System.Threading.Tasks.Task{``0}},``0)">
-            <summary>
-            Runs the provided async function and returns its result. If the task does not run to completion, an exception is logged at <c>Error</c> level.
-            The exception is not propagated outside of this method; a fallback value is returned instead.
-            </summary>
-            <typeparam name="TResult">Return type of the provided function.</typeparam>
-            <param name="asyncFunc">Async function to run.</param>
-            <param name="fallback">Fallback value to return if the task does not end in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state.</param>
-            <returns>A task that represents the completion of the supplied task. If the supplied task ends in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state, the result of the new task will be the result of the supplied task; otherwise, the result of the new task will be the fallback value.</returns>
-        </member>
         <member name="T:NLog.IValueFormatter">
             <summary>
             Render a message template property to a string
@@ -6946,13 +6906,6 @@
             <param name="value">Item value.</param>
             <returns>>An <see cref="T:System.IDisposable"/> that can be used to remove the item from the current logical context.</returns>
         </member>
-        <member name="M:NLog.MappedDiagnosticsLogicalContext.SetScoped(System.Collections.Generic.IReadOnlyList{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
-            <summary>
-            Updates the current logical context with multiple items in single operation
-            </summary>
-            <param name="items">.</param>
-            <returns>>An <see cref="T:System.IDisposable"/> that can be used to remove the item from the current logical context (null if no items).</returns>
-        </member>
         <member name="M:NLog.MappedDiagnosticsLogicalContext.Set(System.String,System.String)">
             <summary>
             Sets the current logical context item to the specified value.
@@ -7168,31 +7121,6 @@
             .NetCore (and .Net46) uses AsyncLocal for handling the thread execution context. Older .NetFramework uses System.Runtime.Remoting.CallContext
             </remarks>
         </member>
-        <member name="M:NLog.ScopeContext.PushNestedStateProperties(System.Object,System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
-            <summary>
-            Pushes new state on the logical context scope stack together with provided properties
-            </summary>
-            <param name="nestedState">Value to added to the scope stack</param>
-            <param name="properties">Properties being added to the scope dictionary</param>
-            <returns>A disposable object that pops the nested scope state on dispose (including properties).</returns>
-            <remarks>Scope dictionary keys are case-insensitive</remarks>
-        </member>
-        <member name="M:NLog.ScopeContext.PushProperties(System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
-            <summary>
-            Updates the logical scope context with provided properties
-            </summary>
-            <param name="properties">Properties being added to the scope dictionary</param>
-            <returns>A disposable object that removes the properties from logical context scope on dispose.</returns>
-            <remarks>Scope dictionary keys are case-insensitive</remarks>
-        </member>
-        <member name="M:NLog.ScopeContext.PushProperties``1(System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,``0}})">
-            <summary>
-            Updates the logical scope context with provided properties
-            </summary>
-            <param name="properties">Properties being added to the scope dictionary</param>
-            <returns>A disposable object that removes the properties from logical context scope on dispose.</returns>
-            <remarks>Scope dictionary keys are case-insensitive</remarks>
-        </member>
         <member name="M:NLog.ScopeContext.PushProperty``1(System.String,``0)">
             <summary>
             Updates the logical scope context with provided property
@@ -7269,11 +7197,6 @@
             Peeks the outer state (oldest) from the logical context scope stack, and returns its running duration
             </summary>
             <returns>Scope Duration Time</returns>
-        </member>
-        <member name="T:NLog.ScopeContext.ScopeContextPropertiesCollapsed">
-            <summary>
-            Special bookmark that can restore original parent, after scopes has been collapsed
-            </summary>
         </member>
         <member name="T:NLog.Filters.ConditionBasedFilter">
             <summary>
@@ -7588,61 +7511,6 @@
             <summary>
             Filter Lookup Key (immutable)
             </summary>
-        </member>
-        <member name="T:NLog.Fluent.Log">
-            <summary>
-            A global logging class using caller info to find the logger.
-            </summary>
-        </member>
-        <member name="M:NLog.Fluent.Log.Level(NLog.LogLevel,System.String)">
-            <summary>
-            Starts building a log event with the specified <see cref="T:System.LogLevel" />.
-            </summary>
-            <param name="logLevel">The log level.</param>
-            <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
-            <returns>An instance of the fluent <see cref="T:NLog.Fluent.LogBuilder"/>.</returns>
-        </member>
-        <member name="M:NLog.Fluent.Log.Trace(System.String)">
-            <summary>
-            Starts building a log event at the <c>Trace</c> level.
-            </summary>
-            <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
-            <returns>An instance of the fluent <see cref="T:NLog.Fluent.LogBuilder"/>.</returns>
-        </member>
-        <member name="M:NLog.Fluent.Log.Debug(System.String)">
-            <summary>
-            Starts building a log event at the <c>Debug</c> level.
-            </summary>
-            <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
-            <returns>An instance of the fluent <see cref="T:NLog.Fluent.LogBuilder"/>.</returns>
-        </member>
-        <member name="M:NLog.Fluent.Log.Info(System.String)">
-            <summary>
-            Starts building a log event at the <c>Info</c> level.
-            </summary>
-            <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
-            <returns>An instance of the fluent <see cref="T:NLog.Fluent.LogBuilder"/>.</returns>
-        </member>
-        <member name="M:NLog.Fluent.Log.Warn(System.String)">
-            <summary>
-            Starts building a log event at the <c>Warn</c> level.
-            </summary>
-            <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
-            <returns>An instance of the fluent <see cref="T:NLog.Fluent.LogBuilder"/>.</returns>
-        </member>
-        <member name="M:NLog.Fluent.Log.Error(System.String)">
-            <summary>
-            Starts building a log event at the <c>Error</c> level.
-            </summary>
-            <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
-            <returns>An instance of the fluent <see cref="T:NLog.Fluent.LogBuilder"/>.</returns>
-        </member>
-        <member name="M:NLog.Fluent.Log.Fatal(System.String)">
-            <summary>
-            Starts building a log event at the <c>Fatal</c> level.
-            </summary>
-            <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
-            <returns>An instance of the fluent <see cref="T:NLog.Fluent.LogBuilder"/>.</returns>
         </member>
         <member name="T:NLog.Fluent.LogBuilder">
             <summary>
@@ -8657,12 +8525,6 @@
             Wraps the list of message-template-parameters as IDictionary-interface
             </summary>
             <param name="messageParameters">Message-template-parameters</param>
-        </member>
-        <member name="M:NLog.Internal.PropertiesDictionary.#ctor(System.Collections.Generic.IReadOnlyList{System.Collections.Generic.KeyValuePair{System.Object,System.Object}})">
-            <summary>
-            Transforms the list of event-properties into IDictionary-interface
-            </summary>
-            <param name="eventProperties">Message-template-parameters</param>
         </member>
         <member name="P:NLog.Internal.PropertiesDictionary.Item(System.Object)">
             <inheritDoc/>
@@ -9958,6 +9820,11 @@
              we strongly recommend you use https://github.com/jstedfast/MailKit and https://github.com/jstedfast/MimeKit instead'	
             </remarks>
         </member>
+        <member name="M:NLog.Internal.MySmtpClient.Dispose">
+            <summary>
+            Sends a QUIT message to the SMTP server, gracefully ends the TCP connection, and releases all resources used by the current instance of the <see cref="T:System.Net.Mail.SmtpClient"/> class.
+            </summary>
+        </member>
         <member name="T:NLog.Internal.NetworkInterfaceRetriever">
             <summary>
             Retrieve network interfaces
@@ -10359,14 +10226,6 @@
             Scans properties for name
             </summary>
         </member>
-        <member name="T:NLog.Internal.ObjectReflectionCache.GetBinderAdapter">
-            <summary>
-            Binder for retrieving value of <see cref="T:System.Dynamic.DynamicObject"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.ObjectReflectionCache.GetBinderAdapter.FallbackGetMember(System.Dynamic.DynamicMetaObject,System.Dynamic.DynamicMetaObject)">
-            <inheritdoc/>
-        </member>
         <member name="T:NLog.Internal.PropertyHelper">
             <summary>
             Reflection helpers for accessing properties.
@@ -10500,41 +10359,6 @@
         <member name="F:NLog.Internal.RuntimeOS.MacOSX">
             <summary>
             Macintosh Mac OSX
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.ScopeContextAsyncState">
-            <summary>
-            Immutable state that combines ScopeContext MDLC + NDLC for <see cref="T:System.Threading.AsyncLocal`1"/>
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.IScopeContextAsyncState">
-            <summary>
-            Immutable state that combines ScopeContext MDLC + NDLC for <see cref="T:System.Threading.AsyncLocal`1"/>
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.IScopeContextPropertiesAsyncState">
-            <summary>
-            Immutable state for ScopeContext Mapped Context (MDLC)
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.ScopedContextNestedAsyncState`1">
-            <summary>
-            Immutable state for ScopeContext Nested State (NDLC)
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.ScopeContextPropertyAsyncState`1">
-            <summary>
-            Immutable state for ScopeContext Single Property (MDLC)
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.ScopeContextPropertiesAsyncState`1">
-            <summary>
-            Immutable state for ScopeContext Multiple Properties (MDLC)
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.ScopeContextLegacyAsyncState">
-            <summary>
-            Immutable state for ScopeContext handling legacy MDLC + NDLC operations
             </summary>
         </member>
         <member name="P:NLog.Internal.SetupConfigurationLoggingRuleBuilder.LoggingRule">
@@ -11004,13 +10828,6 @@
             <summary>
             removes any unusual unicode characters that can't be encoded into XML
             </summary>
-        </member>
-        <member name="M:NLog.Internal.XmlHelper.CreateValidXmlString(System.String)">
-            <summary>
-            Cleans string of any invalid XML chars found
-            </summary>
-            <param name="text">unclean string</param>
-            <returns>string with only valid XML chars</returns>
         </member>
         <member name="M:NLog.Internal.XmlHelper.SmallAndNoEscapeNeeded(System.String,System.Boolean)">
             <summary>
@@ -12663,7 +12480,7 @@
         </member>
         <member name="P:NLog.LayoutRenderers.ExceptionLayoutRenderer.FlattenException">
             <summary>
-            Gets or sets whether to collapse exception tree using <see cref="M:System.AggregateException.Flatten"/>
+            Gets or sets whether to collapse exception tree using AggregateException.Flatten()
             </summary>
             <docgen category='Layout Options' order='50' />
         </member>
@@ -15765,15 +15582,6 @@
             <param name="loggerName">Override default Logger name. Default <see cref="P:NLog.Logger.Name"/> is used when <c>null</c></param>
             <param name="message">Log message including parameter placeholders.</param>
             <param name="messageTemplateParameters">Already parsed message template parameters.</param>
-        </member>
-        <member name="M:NLog.LogEventInfo.#ctor(NLog.LogLevel,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.Collections.Generic.KeyValuePair{System.Object,System.Object}})">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.LogEventInfo" /> class.
-            </summary>
-            <param name="level">Log level.</param>
-            <param name="loggerName">Override default Logger name. Default <see cref="P:NLog.Logger.Name"/> is used when <c>null</c></param>
-            <param name="message">Log message.</param>
-            <param name="eventProperties">List of event-properties</param>
         </member>
         <member name="M:NLog.LogEventInfo.#ctor(NLog.LogLevel,System.String,System.IFormatProvider,System.String,System.Object[])">
             <summary>
@@ -19602,22 +19410,6 @@
             <returns>A disposable object that removes the properties from logical context scope on dispose.</returns>
             <remarks><see cref="T:NLog.ScopeContext"/> property-dictionary-keys are case-insensitive</remarks>
         </member>
-        <member name="M:NLog.Logger.PushScopeProperties(System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
-            <summary>
-            Updates the <see cref="T:NLog.ScopeContext"/> with provided properties
-            </summary>
-            <param name="scopeProperties">Properties being added to the scope dictionary</param>
-            <returns>A disposable object that removes the properties from logical context scope on dispose.</returns>
-            <remarks><see cref="T:NLog.ScopeContext"/> property-dictionary-keys are case-insensitive</remarks>
-        </member>
-        <member name="M:NLog.Logger.PushScopeProperties``1(System.Collections.Generic.IReadOnlyCollection{System.Collections.Generic.KeyValuePair{System.String,``0}})">
-            <summary>
-            Updates the <see cref="T:NLog.ScopeContext"/> with provided properties
-            </summary>
-            <param name="scopeProperties">Properties being added to the scope dictionary</param>
-            <returns>A disposable object that removes the properties from logical context scope on dispose.</returns>
-            <remarks><see cref="T:NLog.ScopeContext"/> property-dictionary-keys are case-insensitive</remarks>
-        </member>
         <member name="M:NLog.Logger.PushScopeNested``1(``0)">
             <summary>
             Pushes new state on the logical context scope stack
@@ -19808,45 +19600,6 @@
             <param name="func">Function to run.</param>
             <param name="fallback">Fallback value to return in case of exception.</param>
             <returns>Result returned by the provided function or fallback value in case of exception.</returns>
-        </member>
-        <member name="M:NLog.Logger.Swallow(System.Threading.Tasks.Task)">
-            <summary>
-            Logs an exception is logged at <c>Error</c> level if the provided task does not run to completion.
-            </summary>
-            <param name="task">The task for which to log an error if it does not run to completion.</param>
-            <remarks>This method is useful in fire-and-forget situations, where application logic does not depend on completion of task. This method is avoids C# warning CS4014 in such situations.</remarks>
-        </member>
-        <member name="M:NLog.Logger.SwallowAsync(System.Threading.Tasks.Task)">
-            <summary>
-            Returns a task that completes when a specified task to completes. If the task does not run to completion, an exception is logged at <c>Error</c> level. The returned task always runs to completion.
-            </summary>
-            <param name="task">The task for which to log an error if it does not run to completion.</param>
-            <returns>A task that completes in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state when <paramref name="task"/> completes.</returns>
-        </member>
-        <member name="M:NLog.Logger.SwallowAsync(System.Func{System.Threading.Tasks.Task})">
-            <summary>
-            Runs async action. If the action throws, the exception is logged at <c>Error</c> level. The exception is not propagated outside of this method.
-            </summary>
-            <param name="asyncAction">Async action to execute.</param>
-        </member>
-        <member name="M:NLog.Logger.SwallowAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
-            <summary>
-            Runs the provided async function and returns its result. If the task does not run to completion, an exception is logged at <c>Error</c> level.
-            The exception is not propagated outside of this method; a default value is returned instead.
-            </summary>
-            <typeparam name="TResult">Return type of the provided function.</typeparam>
-            <param name="asyncFunc">Async function to run.</param>
-            <returns>A task that represents the completion of the supplied task. If the supplied task ends in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state, the result of the new task will be the result of the supplied task; otherwise, the result of the new task will be the default value of type <typeparamref name="TResult"/>.</returns>
-        </member>
-        <member name="M:NLog.Logger.SwallowAsync``1(System.Func{System.Threading.Tasks.Task{``0}},``0)">
-            <summary>
-            Runs the provided async function and returns its result. If the task does not run to completion, an exception is logged at <c>Error</c> level.
-            The exception is not propagated outside of this method; a fallback value is returned instead.
-            </summary>
-            <typeparam name="TResult">Return type of the provided function.</typeparam>
-            <param name="asyncFunc">Async function to run.</param>
-            <param name="fallback">Fallback value to return if the task does not end in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state.</param>
-            <returns>A task that represents the completion of the supplied task. If the supplied task ends in the <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state, the result of the new task will be the result of the supplied task; otherwise, the result of the new task will be the fallback value.</returns>
         </member>
         <member name="M:NLog.Logger.OnLoggerReconfigured(System.EventArgs)">
             <summary>
@@ -21561,223 +21314,6 @@
             Archives will be stamped with the prior period (Year, Month, Day) datetime.
             The most recent archive has the highest number (in combination with the date).
             </summary>
-        </member>
-        <member name="T:NLog.Targets.AsyncTaskTarget">
-             <summary>
-             Abstract Target with async Task support
-             </summary>
-             <remarks>
-             <a href="https://github.com/NLog/NLog/wiki/How-to-write-a-custom-async-target">See NLog Wiki</a>
-             </remarks>
-             <example><code>
-             [Target("MyFirst")]
-             public sealed class MyFirstTarget : AsyncTaskTarget
-             {
-                public MyFirstTarget()
-                {
-                    this.Host = "localhost";
-                }
-                 
-                [RequiredParameter]
-                public Layout Host { get; set; }
-            
-                protected override Task WriteAsyncTask(LogEventInfo logEvent, CancellationToken token)
-                {
-                    string logMessage = this.RenderLogEvent(this.Layout, logEvent);
-                    string hostName = this.RenderLogEvent(this.Host, logEvent);
-                    return SendTheMessageToRemoteHost(hostName, logMessage);
-                }
-            
-                private async Task SendTheMessageToRemoteHost(string hostName, string message)
-                {
-                    // To be implemented
-                }
-             }
-             </code></example>
-             <seealso href="https://github.com/NLog/NLog/wiki/How-to-write-a-custom-async-target">Documentation on NLog Wiki</seealso>
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.TaskDelayMilliseconds">
-            <summary>
-            How many milliseconds to delay the actual write operation to optimize for batching
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.TaskTimeoutSeconds">
-            <summary>
-            How many seconds a Task is allowed to run before it is cancelled.
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.RetryCount">
-            <summary>
-            How many attempts to retry the same Task, before it is aborted
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.RetryDelayMilliseconds">
-            <summary>
-            How many milliseconds to wait before next retry (will double with each retry)
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.ForceLockingQueue">
-            <summary>
-            Gets or sets whether to use the locking queue, instead of a lock-free concurrent queue
-            The locking queue is less concurrent when many logger threads, but reduces memory allocation
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.OverflowAction">
-            <summary>
-            Gets or sets the action to be taken when the lazy writer thread request queue count
-            exceeds the set limit.
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.QueueLimit">
-            <summary>
-            Gets or sets the limit on the number of requests in the lazy writer thread request queue.
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.BatchSize">
-            <summary>
-            Gets or sets the number of log events that should be processed in a batch
-            by the lazy writer thread.
-            </summary>
-            <docgen category='Buffering Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.AsyncTaskTarget.TaskScheduler">
-            <summary>
-            Task Scheduler used for processing async Tasks
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.#ctor">
-            <summary>
-            Constructor
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.InitializeTarget">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.WriteAsyncTask(NLog.LogEventInfo,System.Threading.CancellationToken)">
-            <summary>
-            Override this to provide async task for writing a single logevent.
-            <example>
-            Example of how to override this method, and call custom async method
-            <code>
-            protected override Task WriteAsyncTask(LogEventInfo logEvent, CancellationToken token)
-            {
-               return CustomWriteAsync(logEvent, token);
-            }
-            
-            private async Task CustomWriteAsync(LogEventInfo logEvent, CancellationToken token)
-            {
-                await MyLogMethodAsync(logEvent, token).ConfigureAwait(false);
-            }
-            </code></example>
-            </summary>
-            <param name="logEvent">The log event.</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.WriteAsyncTask(System.Collections.Generic.IList{NLog.LogEventInfo},System.Threading.CancellationToken)">
-            <summary>
-            Override this to provide async task for writing a batch of logevents.
-            </summary>
-            <param name="logEvents">A batch of logevents.</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <returns></returns>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.RetryFailedAsyncTask(System.Exception,System.Threading.CancellationToken,System.Int32,System.TimeSpan@)">
-            <summary>
-            Handle cleanup after failed write operation
-            </summary>
-            <param name="exception">Exception from previous failed Task</param>
-            <param name="cancellationToken">The cancellation token</param>
-            <param name="retryCountRemaining">Number of retries remaining</param>
-            <param name="retryDelay">Time to sleep before retrying</param>
-            <returns>Should attempt retry</returns>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.Write(NLog.LogEventInfo)">
-            <summary>
-            Block for override. Instead override <see cref="M:NLog.Targets.AsyncTaskTarget.WriteAsyncTask(NLog.LogEventInfo,System.Threading.CancellationToken)"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.Write(System.Collections.Generic.IList{NLog.Common.AsyncLogEventInfo})">
-            <summary>
-            Block for override. Instead override <see cref="M:NLog.Targets.AsyncTaskTarget.WriteAsyncTask(System.Collections.Generic.IList{NLog.LogEventInfo},System.Threading.CancellationToken)"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.Write(NLog.Common.AsyncLogEventInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.WriteAsyncThreadSafe(NLog.Common.AsyncLogEventInfo)">
-            <summary>
-            Write to queue without locking <see cref="P:NLog.Targets.Target.SyncRoot"/> 
-            </summary>
-            <param name="logEvent"></param>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.WriteAsyncThreadSafe(System.Collections.Generic.IList{NLog.Common.AsyncLogEventInfo})">
-            <summary>
-            Block for override. Instead override <see cref="M:NLog.Targets.AsyncTaskTarget.WriteAsyncTask(System.Collections.Generic.IList{NLog.LogEventInfo},System.Threading.CancellationToken)"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.WriteFailedNotInitialized(NLog.Common.AsyncLogEventInfo,System.Exception)">
-            <summary>
-            LogEvent is written to target, but target failed to successfully initialize
-            
-            Enqueue logevent for later processing when target failed to initialize because of unresolved service dependency.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.FlushAsync(NLog.Common.AsyncContinuation)">
-            <summary>
-            Schedules notification of when all messages has been written
-            </summary>
-            <param name="asyncContinuation"></param>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.CloseTarget">
-            <summary>
-            Closes Target by updating CancellationToken 
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.Dispose(System.Boolean)">
-            <summary>
-            Releases any managed resources
-            </summary>
-            <param name="disposing"></param>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.TaskStartNext(System.Object,System.Boolean)">
-            <summary>
-            Checks the internal queue for the next <see cref="T:NLog.LogEventInfo"/> to create a new task for
-            </summary>
-            <param name="previousTask">Used for race-condition validation between task-completion and timeout</param>
-            <param name="fullBatchCompleted">Signals whether previousTask completed an almost full BatchSize</param>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.WriteAsyncTaskWithRetry(System.Threading.Tasks.Task,System.Collections.Generic.IList{NLog.LogEventInfo},System.Threading.CancellationToken,System.Int32)">
-            <summary>
-            Generates recursive task-chain to perform retry of writing logevents with increasing retry-delay
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.TaskCreation(System.Collections.Generic.IList{NLog.Common.AsyncLogEventInfo})">
-            <summary>
-            Creates new task to handle the writing of the input <see cref="T:NLog.LogEventInfo"/>
-            </summary>
-            <param name="logEvents">LogEvents to write</param>
-            <returns>New Task created [true / false]</returns>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.TaskCompletion(System.Threading.Tasks.Task,System.Object)">
-            <summary>
-            Handles that scheduled task has completed (successfully or failed), and starts the next pending task
-            </summary>
-            <param name="completedTask">Task just completed</param>
-            <param name="continuation">AsyncContinuation to notify of success or failure</param>
-        </member>
-        <member name="M:NLog.Targets.AsyncTaskTarget.TaskTimeout(System.Object)">
-            <summary>
-            Timer method, that is fired when pending task fails to complete within timeout
-            </summary>
-            <param name="state"></param>
         </member>
         <member name="T:NLog.Targets.ChainsawTarget">
             <summary>
@@ -26754,54 +26290,6 @@
             </summary>
             <param name="asyncContinuation">The asynchronous continuation.</param>
         </member>
-        <member name="T:NLog.Targets.Wrappers.ConcurrentRequestQueue">
-            <summary>
-            Concurrent Asynchronous request queue based on <see cref="T:System.Collections.Concurrent.ConcurrentQueue`1"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.Wrappers.ConcurrentRequestQueue.#ctor(System.Int32,NLog.Targets.Wrappers.AsyncTargetWrapperOverflowAction)">
-            <summary>
-            Initializes a new instance of the AsyncRequestQueue class.
-            </summary>
-            <param name="requestLimit">Request limit.</param>
-            <param name="overflowAction">The overflow action.</param>
-        </member>
-        <member name="P:NLog.Targets.Wrappers.ConcurrentRequestQueue.Count">
-            <summary>
-            Gets the number of requests currently in the queue.
-            </summary>
-            <remarks>
-            Only for debugging purposes
-            </remarks>
-        </member>
-        <member name="M:NLog.Targets.Wrappers.ConcurrentRequestQueue.Enqueue(NLog.Common.AsyncLogEventInfo)">
-            <summary>
-            Enqueues another item. If the queue is overflown the appropriate
-            action is taken as specified by <see cref="P:NLog.Targets.Wrappers.AsyncRequestQueueBase.OnOverflow"/>.
-            </summary>
-            <param name="logEventInfo">The log event info.</param>
-            <returns>Queue was empty before enqueue</returns>
-        </member>
-        <member name="M:NLog.Targets.Wrappers.ConcurrentRequestQueue.DequeueBatch(System.Int32)">
-            <summary>
-            Dequeues a maximum of <c>count</c> items from the queue
-            and adds returns the list containing them.
-            </summary>
-            <param name="count">Maximum number of items to be dequeued</param>
-            <returns>The array of log events.</returns>
-        </member>
-        <member name="M:NLog.Targets.Wrappers.ConcurrentRequestQueue.DequeueBatch(System.Int32,System.Collections.Generic.IList{NLog.Common.AsyncLogEventInfo})">
-            <summary>
-            Dequeues into a preallocated array, instead of allocating a new one
-            </summary>
-            <param name="count">Maximum number of items to be dequeued</param>
-            <param name="result">Preallocated list</param>
-        </member>
-        <member name="M:NLog.Targets.Wrappers.ConcurrentRequestQueue.Clear">
-            <summary>
-            Clears the queue.
-            </summary>
-        </member>
         <member name="T:NLog.Targets.Wrappers.FallbackGroupTarget">
             <summary>
             Provides fallback-on-error.
@@ -27529,19 +27017,6 @@
             classes.
             </summary>
             <param name="logEvent">Logging event to be written out.</param>
-        </member>
-        <member name="T:NLog.Targets.ZipArchiveFileCompressor">
-            <summary>
-            Builtin IFileCompressor implementation utilizing the .Net4.5 specific <see cref="T:System.IO.Compression.ZipArchive"/> 
-            and is used as the default value for <see cref="P:NLog.Targets.FileTarget.FileCompressor"/> on .Net4.5.
-            So log files created via <see cref="T:NLog.Targets.FileTarget"/> can be zipped when archived
-            w/o 3rd party zip library when run on .Net4.5 or higher.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.ZipArchiveFileCompressor.CompressFile(System.String,System.String)">
-            <summary>
-            Implements <see cref="M:NLog.Targets.IFileCompressor.CompressFile(System.String,System.String)"/> using the .Net4.5 specific <see cref="T:System.IO.Compression.ZipArchive"/>
-            </summary>
         </member>
         <member name="T:NLog.Time.AccurateLocalTimeSource">
             <summary>

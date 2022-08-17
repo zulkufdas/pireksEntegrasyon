@@ -3975,19 +3975,6 @@
             <param name="message">The message.</param>
             <param name="innerException">The inner exception.</param>
         </member>
-        <member name="M:NLog.Conditions.ConditionEvaluationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Conditions.ConditionEvaluationException" /> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">
-            The <paramref name="info"/> parameter is null.
-            </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">
-            The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
-            </exception>
-        </member>
         <member name="T:NLog.Conditions.ConditionParseException">
             <summary>
             Exception during parsing of condition expression.
@@ -4010,19 +3997,6 @@
             </summary>
             <param name="message">The message.</param>
             <param name="innerException">The inner exception.</param>
-        </member>
-        <member name="M:NLog.Conditions.ConditionParseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Conditions.ConditionParseException" /> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">
-            The <paramref name="info"/> parameter is null.
-            </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">
-            The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
-            </exception>
         </member>
         <member name="T:NLog.Conditions.ConditionAndExpression">
             <summary>
@@ -4648,30 +4622,6 @@
             <summary>
             The assembly that is trying to load.
             </summary>
-        </member>
-        <member name="T:NLog.Config.ConfigSectionHandler">
-            <summary>
-            Class for providing Nlog configuration xml code from app.config
-            to <see cref="T:NLog.Config.XmlLoggingConfiguration"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Config.ConfigSectionHandler.DeserializeElement(System.Xml.XmlReader,System.Boolean)">
-            <summary>
-            Overriding base implementation to just store <see cref="T:System.Xml.XmlReader"/>
-            of the relevant app.config section.
-            </summary>
-            <param name="reader">The XmlReader that reads from the configuration file.</param>
-            <param name="serializeCollectionKey">true to serialize only the collection key properties; otherwise, false.</param>
-        </member>
-        <member name="M:NLog.Config.ConfigSectionHandler.GetRuntimeObject">
-            <summary>
-            Override base implementation to return a <see cref="T:NLog.Config.LoggingConfiguration"/> object
-            for <see cref="M:System.Configuration.ConfigurationManager.GetSection(System.String)"/>
-            instead of the <see cref="T:NLog.Config.ConfigSectionHandler"/> instance.
-            </summary>
-            <returns>
-            A <see cref="T:NLog.Config.LoggingConfiguration"/> instance, that has been deserialized from app.config.
-            </returns>
         </member>
         <member name="T:NLog.Config.ConfigurationItemCreator">
             <summary>
@@ -6625,12 +6575,6 @@
             <param name="xml">NLog configuration in XML to be parsed</param>
             <param name="logFactory">NLog LogFactory</param>
         </member>
-        <member name="P:NLog.Config.XmlLoggingConfiguration.AppConfig">
-            <summary>
-            Gets the default <see cref="T:NLog.Config.LoggingConfiguration" /> object by parsing 
-            the application configuration file (<c>app.exe.config</c>).
-            </summary>
-        </member>
         <member name="P:NLog.Config.XmlLoggingConfiguration.InitializeSucceeded">
             <summary>
             Did the <see cref="M:NLog.Config.XmlLoggingConfiguration.Initialize(System.Xml.XmlReader,System.String,System.Boolean)"/> Succeeded? <c>true</c>= success, <c>false</c>= error, <c>null</c> = initialize not started yet.
@@ -7596,7 +7540,7 @@
         </member>
         <member name="M:NLog.Fluent.Log.Level(NLog.LogLevel,System.String)">
             <summary>
-            Starts building a log event with the specified <see cref="T:System.LogLevel" />.
+            Starts building a log event with the specified <see cref="T:NLog.LogLevel" />.
             </summary>
             <param name="logLevel">The log level.</param>
             <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
@@ -8262,59 +8206,46 @@
             <summary>Returns the content of the specified file</summary>
             <param name="path">The file to load.</param>
         </member>
-        <member name="T:NLog.Internal.Fakeables.AppDomainWrapper">
-            <summary>
-            Adapter for <see cref="T:System.AppDomain"/> to <see cref="T:NLog.Internal.Fakeables.IAppDomain"/>
-            </summary>
+        <member name="M:NLog.Internal.Fakeables.FakeAppDomain.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
         </member>
-        <member name="M:NLog.Internal.Fakeables.AppDomainWrapper.#ctor(System.AppDomain)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Internal.Fakeables.AppDomainWrapper"/> class.
-            </summary>
-            <param name="appDomain">The <see cref="T:System.AppDomain"/> to wrap.</param>
-        </member>
-        <member name="P:NLog.Internal.Fakeables.AppDomainWrapper.CurrentDomain">
-            <summary>
-            Creates an AppDomainWrapper for the current <see cref="T:System.AppDomain"/>
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.Fakeables.AppDomainWrapper.BaseDirectory">
+        <member name="P:NLog.Internal.Fakeables.FakeAppDomain.BaseDirectory">
             <summary>
             Gets or sets the base directory that the assembly resolver uses to probe for assemblies.
             </summary>
         </member>
-        <member name="P:NLog.Internal.Fakeables.AppDomainWrapper.ConfigurationFile">
+        <member name="P:NLog.Internal.Fakeables.FakeAppDomain.ConfigurationFile">
             <summary>
             Gets or sets the name of the configuration file for an application domain.
             </summary>
         </member>
-        <member name="P:NLog.Internal.Fakeables.AppDomainWrapper.PrivateBinPath">
+        <member name="P:NLog.Internal.Fakeables.FakeAppDomain.PrivateBinPath">
             <summary>
             Gets or sets the list of directories under the application base directory that are probed for private assemblies.
             </summary>
         </member>
-        <member name="P:NLog.Internal.Fakeables.AppDomainWrapper.FriendlyName">
+        <member name="P:NLog.Internal.Fakeables.FakeAppDomain.FriendlyName">
             <summary>
             Gets or set the friendly name.
             </summary>
         </member>
-        <member name="P:NLog.Internal.Fakeables.AppDomainWrapper.Id">
+        <member name="P:NLog.Internal.Fakeables.FakeAppDomain.Id">
             <summary>
             Gets an integer that uniquely identifies the application domain within the process. 
             </summary>
         </member>
-        <member name="M:NLog.Internal.Fakeables.AppDomainWrapper.GetAssemblies">
+        <member name="M:NLog.Internal.Fakeables.FakeAppDomain.GetAssemblies">
             <summary>
             Gets the assemblies that have been loaded into the execution context of this application domain.
             </summary>
             <returns>A list of assemblies in this application domain.</returns>
         </member>
-        <member name="E:NLog.Internal.Fakeables.AppDomainWrapper.ProcessExit">
+        <member name="E:NLog.Internal.Fakeables.FakeAppDomain.ProcessExit">
             <summary>
             Process exit event.
             </summary>
         </member>
-        <member name="E:NLog.Internal.Fakeables.AppDomainWrapper.DomainUnload">
+        <member name="E:NLog.Internal.Fakeables.FakeAppDomain.DomainUnload">
             <summary>
             Domain unloaded event.
             </summary>
@@ -8363,16 +8294,6 @@
         </member>
         <member name="M:NLog.Internal.Fakeables.AppEnvironmentWrapper.LoadXmlFile(System.String)">
             <inheritdoc/>
-        </member>
-        <member name="T:NLog.Internal.IConfigurationManager">
-            <summary>
-            Interface for the wrapper around System.Configuration.ConfigurationManager.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.IConfigurationManager.AppSettings">
-            <summary>
-            Gets the wrapper around ConfigurationManager.AppSettings.
-            </summary>
         </member>
         <member name="T:NLog.Internal.ILogMessageFormatter">
             <summary>
@@ -8949,13 +8870,6 @@
         </member>
         <member name="M:NLog.Internal.SortHelpers.ReadOnlySingleBucketDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
             <summary>Will always throw, as dictionary is readonly</summary>
-        </member>
-        <member name="T:NLog.Internal.ConfigurationManager">
-            <summary>
-            Internal configuration manager used to read .NET configuration files.
-            Just a wrapper around the BCL ConfigurationManager, but used to enable
-            unit testing.
-            </summary>
         </member>
         <member name="F:NLog.Internal.EncodingHelpers.Utf8BOM">
             <summary>
@@ -9649,66 +9563,6 @@
             Instance of <see cref="T:NLog.Internal.FileAppenders.BaseFileAppender"/> which can be used to write to the file.
             </returns>
         </member>
-        <member name="T:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender">
-            <summary>
-            Provides a multi process-safe atomic file append while
-            keeping the files open.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.#ctor(System.String,NLog.Internal.FileAppenders.ICreateFileParameters)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender" /> class.
-            </summary>
-            <param name="fileName">Name of the file.</param>
-            <param name="parameters">The parameters.</param>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.CreateAppendOnlyFile(System.String)">
-            <summary>
-            Creates or opens a file in a special mode, so that writes are automatically
-            as atomic writes at the file end.
-            See also "UnixMultiProcessFileAppender" which does a similar job on *nix platforms.
-            </summary>
-            <param name="fileName">File to create or open</param>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Write(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            Writes the specified bytes.
-            </summary>
-            <param name="bytes">The bytes array.</param>
-            <param name="offset">The bytes array offset.</param>
-            <param name="count">The number of bytes.</param>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Close">
-            <summary>
-            Closes this instance.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Flush">
-            <summary>
-            Flushes this instance.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.GetFileLength">
-            <summary>
-            Gets the length in bytes of the file associated with the appender.
-            </summary>
-            <returns>A long value representing the length of the file in bytes.</returns>
-        </member>
-        <member name="T:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Factory">
-            <summary>
-            Factory class.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Factory.NLog#Internal#FileAppenders#IFileAppenderFactory#Open(System.String,NLog.Internal.FileAppenders.ICreateFileParameters)">
-            <summary>
-            Opens the appender for given file name and parameters.
-            </summary>
-            <param name="fileName">Name of the file.</param>
-            <param name="parameters">Creation parameters.</param>
-            <returns>
-            Instance of <see cref="T:NLog.Internal.FileAppenders.BaseFileAppender"/> which can be used to write to the file.
-            </returns>
-        </member>
         <member name="T:NLog.Internal.FilePathLayout">
             <summary>
             A layout that represents a filePath. 
@@ -9844,60 +9698,6 @@
             If <paramref name="formatProvider"/> is <c>null</c> and <paramref name="o"/> isn't a <see cref="T:System.String"/> already, then the <see cref="T:NLog.LogFactory"/> will get a locked by <see cref="P:NLog.LogManager.Configuration"/>
             </remarks>
         </member>
-        <member name="T:NLog.Internal.INetworkInterfaceRetriever">
-            <summary>
-            Retrieve network interfaces
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.INetworkInterfaceRetriever.AllNetworkInterfaces">
-            <summary>
-            Retrieve network interfaces
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.ISmtpClient">
-            <summary>
-            Supports mocking of SMTP Client code.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.ISmtpClient.DeliveryMethod">
-            <summary>
-            Specifies how outgoing email messages will be handled.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.ISmtpClient.Host">
-            <summary>
-            Gets or sets the name or IP address of the host used for SMTP transactions.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.ISmtpClient.Port">
-            <summary>
-            Gets or sets the port used for SMTP transactions.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.ISmtpClient.Timeout">
-            <summary>
-            Gets or sets a value that specifies the amount of time after which a synchronous <see cref="M:NLog.Internal.ISmtpClient.Send(System.Net.Mail.MailMessage)">Send</see> call times out.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.ISmtpClient.Credentials">
-            <summary>
-            Gets or sets the credentials used to authenticate the sender.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.ISmtpClient.Send(System.Net.Mail.MailMessage)">
-            <summary>
-            Sends an e-mail message to an SMTP server for delivery. These methods block while the message is being transmitted.
-            </summary>
-            <param name="msg">
-              <typeparam>System.Net.Mail.MailMessage
-                <name>MailMessage</name>
-            </typeparam> A <see cref="T:System.Net.Mail.MailMessage">MailMessage</see> that contains the message to send.</param>
-        </member>
-        <member name="P:NLog.Internal.ISmtpClient.PickupDirectoryLocation">
-            <summary>
-            Gets or sets the folder where applications save mail messages to be processed by the local SMTP server.
-            </summary>
-        </member>
         <member name="P:NLog.Internal.LogMessageStringFormatter.MessageFormatter">
             <summary>
             The MessageFormatter delegate
@@ -9947,25 +9747,6 @@
         <member name="M:NLog.Internal.MutexDetector.ResolveSupportsSharableMutex">
             <summary>
             Will creating a mutex succeed runtime?
-            </summary>
-        </member>
-        <member name="T:NLog.Internal.MySmtpClient">
-            <summary>
-            Supports mocking of SMTP Client code.
-            </summary>
-            <remarks>
-            Disabled Error CS0618  'SmtpClient' is obsolete: 'SmtpClient and its network of types are poorly designed,
-             we strongly recommend you use https://github.com/jstedfast/MailKit and https://github.com/jstedfast/MimeKit instead'	
-            </remarks>
-        </member>
-        <member name="T:NLog.Internal.NetworkInterfaceRetriever">
-            <summary>
-            Retrieve network interfaces
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.NetworkInterfaceRetriever.AllNetworkInterfaces">
-            <summary>
-            Retrieve network interfaces
             </summary>
         </member>
         <member name="T:NLog.Internal.NetworkSenders.HttpNetworkSender">
@@ -10304,11 +10085,6 @@
             Gets a value indicating whether current OS is Unix-based.
             </summary>
         </member>
-        <member name="P:NLog.Internal.PlatformDetector.IsMono">
-            <summary>
-            Gets a value indicating whether current runtime is Mono-based
-            </summary>
-        </member>
         <member name="T:NLog.Internal.ObjectGraphScanner">
             <summary>
             Scans (breadth-first) the object graph following all the edges whose are 
@@ -10358,14 +10134,6 @@
             <summary>
             Scans properties for name
             </summary>
-        </member>
-        <member name="T:NLog.Internal.ObjectReflectionCache.GetBinderAdapter">
-            <summary>
-            Binder for retrieving value of <see cref="T:System.Dynamic.DynamicObject"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.ObjectReflectionCache.GetBinderAdapter.FallbackGetMember(System.Dynamic.DynamicMetaObject,System.Dynamic.DynamicMetaObject)">
-            <inheritdoc/>
         </member>
         <member name="T:NLog.Internal.PropertyHelper">
             <summary>
@@ -10578,14 +10346,6 @@
             Gets the fully qualified name of the class invoking the calling method, including the 
             namespace but not the assembly.    
             </summary>
-        </member>
-        <member name="M:NLog.Internal.StackTraceUsageUtils.GetClassFullName(System.Diagnostics.StackFrame)">
-            <summary>
-            Gets the fully qualified name of the class invoking the calling method, including the 
-            namespace but not the assembly.
-            </summary>
-            <param name="stackFrame">StackFrame from the calling method</param>
-            <returns>Fully qualified class name</returns>
         </member>
         <member name="M:NLog.Internal.StackTraceUsageUtils.LookupAssemblyFromStackFrame(System.Diagnostics.StackFrame)">
             <summary>
@@ -11005,13 +10765,6 @@
             removes any unusual unicode characters that can't be encoded into XML
             </summary>
         </member>
-        <member name="M:NLog.Internal.XmlHelper.CreateValidXmlString(System.String)">
-            <summary>
-            Cleans string of any invalid XML chars found
-            </summary>
-            <param name="text">unclean string</param>
-            <returns>string with only valid XML chars</returns>
-        </member>
         <member name="M:NLog.Internal.XmlHelper.SmallAndNoEscapeNeeded(System.String,System.Boolean)">
             <summary>
             Pretest, small text and not escape needed
@@ -11123,41 +10876,6 @@
         <member name="M:NLog.LayoutRenderers.AppDomainLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
             <inheritdoc/>
         </member>
-        <member name="T:NLog.LayoutRenderers.AppSettingLayoutRenderer">
-            <summary>
-            Application setting.
-            </summary>
-            <remarks>
-            Use this layout renderer to insert the value of an application setting
-            stored in the application's App.config or Web.config file.
-            </remarks>
-            <code lang="NLog Layout Renderer">
-            ${appsetting:item=mysetting:default=mydefault} - produces "mydefault" if no appsetting
-            </code>
-        </member>
-        <member name="P:NLog.LayoutRenderers.AppSettingLayoutRenderer.Item">
-            <summary>
-             The AppSetting item-name
-            </summary>
-             <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.AppSettingLayoutRenderer.Name">
-            <summary>
-             The AppSetting item-name
-            </summary>
-        </member>
-        <member name="P:NLog.LayoutRenderers.AppSettingLayoutRenderer.Default">
-            <summary>
-             The default value to render if the AppSetting value is null.
-            </summary>
-             <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="M:NLog.LayoutRenderers.AppSettingLayoutRenderer.InitializeLayoutRenderer">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.LayoutRenderers.AppSettingLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
         <member name="T:NLog.LayoutRenderers.AssemblyVersionLayoutRenderer">
             <summary>
             Renders the assembly version information for the entry assembly or a named assembly.
@@ -11237,38 +10955,6 @@
             <summary>
             Gets the product version, extracted from the additional version information.
             </summary>
-        </member>
-        <member name="T:NLog.LayoutRenderers.EnvironmentUserLayoutRenderer">
-            <summary>
-            Thread identity information (username).
-            </summary>
-        </member>
-        <member name="P:NLog.LayoutRenderers.EnvironmentUserLayoutRenderer.UserName">
-            <summary>
-            Gets or sets a value indicating whether username should be included.
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.EnvironmentUserLayoutRenderer.Domain">
-            <summary>
-            Gets or sets a value indicating whether domain name should be included.
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.EnvironmentUserLayoutRenderer.DefaultUser">
-            <summary>
-            Gets or sets the default value to be used when the User is not set.
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.EnvironmentUserLayoutRenderer.DefaultDomain">
-            <summary>
-            Gets or sets the default value to be used when the Domain is not set.
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="M:NLog.LayoutRenderers.EnvironmentUserLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
-            <inheritdoc/>
         </member>
         <member name="T:NLog.LayoutRenderers.GarbageCollectorInfoLayoutRenderer">
             <summary>
@@ -12156,14 +11842,6 @@
         <member name="M:NLog.LayoutRenderers.ScopeContextTimingLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
             <inheritdoc/>
         </member>
-        <member name="T:NLog.LayoutRenderers.TraceActivityIdLayoutRenderer">
-            <summary>
-            A renderer that puts into log a System.Diagnostics trace correlation id.
-            </summary>
-        </member>
-        <member name="M:NLog.LayoutRenderers.TraceActivityIdLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
         <member name="T:NLog.LayoutRenderers.CounterLayoutRenderer">
             <summary>
             A counter value (increases on each layout rendering).
@@ -12468,75 +12146,6 @@
         <member name="M:NLog.LayoutRenderers.ProcessDirLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
             <inheritdoc/>
         </member>
-        <member name="T:NLog.LayoutRenderers.SpecialFolderApplicationDataLayoutRenderer">
-            <summary>
-            System special folder path from <see cref="F:System.Environment.SpecialFolder.ApplicationData"/>
-            </summary>
-        </member>
-        <member name="M:NLog.LayoutRenderers.SpecialFolderApplicationDataLayoutRenderer.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.LayoutRenderers.SpecialFolderApplicationDataLayoutRenderer" /> class.
-            </summary>
-        </member>
-        <member name="T:NLog.LayoutRenderers.SpecialFolderCommonApplicationDataLayoutRenderer">
-            <summary>
-            System special folder path from <see cref="F:System.Environment.SpecialFolder.CommonApplicationData"/>
-            </summary>
-        </member>
-        <member name="M:NLog.LayoutRenderers.SpecialFolderCommonApplicationDataLayoutRenderer.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.LayoutRenderers.SpecialFolderCommonApplicationDataLayoutRenderer" /> class.
-            </summary>
-        </member>
-        <member name="T:NLog.LayoutRenderers.SpecialFolderLayoutRenderer">
-            <summary>
-            System special folder path (includes My Documents, My Music, Program Files, Desktop, and more).
-            </summary>
-        </member>
-        <member name="P:NLog.LayoutRenderers.SpecialFolderLayoutRenderer.Folder">
-            <summary>
-            Gets or sets the system special folder to use.
-            </summary>
-            <remarks>
-            Full list of options is available at <a href="https://docs.microsoft.com/en-us/dotnet/api/system.environment.specialfolder">MSDN</a>.
-            The most common ones are:
-            <ul>
-            <li><b>ApplicationData</b> - roaming application data for current user.</li>
-            <li><b>CommonApplicationData</b> - application data for all users.</li>
-            <li><b>MyDocuments</b> - My Documents</li>
-            <li><b>DesktopDirectory</b> - Desktop directory</li>
-            <li><b>LocalApplicationData</b> - non roaming application data</li>
-            <li><b>Personal</b> - user profile directory</li>
-            <li><b>System</b> - System directory</li>
-            </ul>
-            </remarks>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.SpecialFolderLayoutRenderer.File">
-            <summary>
-            Gets or sets the name of the file to be Path.Combine()'d with the directory name.
-            </summary>
-            <docgen category='Advanced Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.SpecialFolderLayoutRenderer.Dir">
-            <summary>
-            Gets or sets the name of the directory to be Path.Combine()'d with the directory name.
-            </summary>
-            <docgen category='Advanced Options' order='10' />
-        </member>
-        <member name="M:NLog.LayoutRenderers.SpecialFolderLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="T:NLog.LayoutRenderers.SpecialFolderLocalApplicationDataLayoutRenderer">
-            <summary>
-            System special folder path from <see cref="F:System.Environment.SpecialFolder.LocalApplicationData"/>
-            </summary>
-        </member>
-        <member name="M:NLog.LayoutRenderers.SpecialFolderLocalApplicationDataLayoutRenderer.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.LayoutRenderers.SpecialFolderLocalApplicationDataLayoutRenderer" /> class.
-            </summary>
-        </member>
         <member name="T:NLog.LayoutRenderers.TempDirLayoutRenderer">
             <summary>
             A temporary directory.
@@ -12764,6 +12373,13 @@
             Split the string and then compile into list of Rendering formats.
             </summary>
         </member>
+        <member name="M:NLog.LayoutRenderers.ExceptionLayoutRenderer.ParseMethodNameFromStackTrace(System.String)">
+            <summary>
+            Find name of method on stracktrace.
+            </summary>
+            <param name="stackTrace">Full stracktrace</param>
+            <returns></returns>
+        </member>
         <member name="T:NLog.LayoutRenderers.FileContentsLayoutRenderer">
             <summary>
             Renders contents of the specified file.
@@ -12853,39 +12469,6 @@
             </summary>
             <param name="layoutRendererName">Name without ${}.</param>
             <param name="renderMethod">Method that renders the layout.</param>
-        </member>
-        <member name="T:NLog.LayoutRenderers.IdentityLayoutRenderer">
-            <summary>
-            Thread identity information (name and authentication information).
-            </summary>
-        </member>
-        <member name="P:NLog.LayoutRenderers.IdentityLayoutRenderer.Separator">
-            <summary>
-            Gets or sets the separator to be used when concatenating 
-            parts of identity information.
-            </summary>
-            <docgen category='Layout Options' order='50' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.IdentityLayoutRenderer.Name">
-            <summary>
-            Gets or sets a value indicating whether to render Thread.CurrentPrincipal.Identity.Name.
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.IdentityLayoutRenderer.AuthType">
-            <summary>
-            Gets or sets a value indicating whether to render Thread.CurrentPrincipal.Identity.AuthenticationType.
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.IdentityLayoutRenderer.IsAuthenticated">
-            <summary>
-            Gets or sets a value indicating whether to render Thread.CurrentPrincipal.Identity.IsAuthenticated.
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="M:NLog.LayoutRenderers.IdentityLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
-            <inheritdoc/>
         </member>
         <member name="T:NLog.LayoutRenderers.LayoutRenderer">
             <summary>
@@ -13291,29 +12874,6 @@
             <returns></returns>
         </member>
         <member name="M:NLog.LayoutRenderers.HostNameLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="T:NLog.LayoutRenderers.LocalIpAddressLayoutRenderer">
-            <summary>
-            The IP address from the network interface card (NIC) on the local machine
-            </summary>
-            <remarks>
-            Skips loopback-adapters and tunnel-interfaces. Skips devices without any MAC-address
-            </remarks>
-        </member>
-        <member name="P:NLog.LayoutRenderers.LocalIpAddressLayoutRenderer.AddressFamily">
-            <summary>
-            Get or set whether to prioritize IPv6 or IPv4 (default)
-            </summary>
-            <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="M:NLog.LayoutRenderers.LocalIpAddressLayoutRenderer.#ctor">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.LayoutRenderers.LocalIpAddressLayoutRenderer.#ctor(NLog.Internal.INetworkInterfaceRetriever)">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.LayoutRenderers.LocalIpAddressLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
             <inheritdoc/>
         </member>
         <member name="T:NLog.LayoutRenderers.MachineNameLayoutRenderer">
@@ -20675,19 +20235,6 @@
             <param name="message">The message.</param>
             <param name="innerException">The inner exception.</param>
         </member>
-        <member name="M:NLog.NLogConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.NLogConfigurationException" /> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">
-            The <paramref name="info"/> parameter is null.
-            </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">
-            The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
-            </exception>
-        </member>
         <member name="T:NLog.NLogRuntimeException">
             <summary>
             Exception thrown during log event processing.
@@ -20717,183 +20264,6 @@
             </summary>
             <param name="message">The message.</param>
             <param name="innerException">The inner exception.</param>
-        </member>
-        <member name="M:NLog.NLogRuntimeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.NLogRuntimeException" /> class.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">
-            The <paramref name="info"/> parameter is null.
-            </exception>
-            <exception cref="T:System.Runtime.Serialization.SerializationException">
-            The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
-            </exception>
-        </member>
-        <member name="T:NLog.NLogTraceListener">
-            <summary>
-            TraceListener which routes all messages through NLog.
-            </summary>
-        </member>
-        <member name="M:NLog.NLogTraceListener.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.NLogTraceListener"/> class.
-            </summary>
-        </member>
-        <member name="P:NLog.NLogTraceListener.LogFactory">
-            <summary>
-            Gets or sets the log factory to use when outputting messages (null - use LogManager).
-            </summary>
-        </member>
-        <member name="P:NLog.NLogTraceListener.DefaultLogLevel">
-            <summary>
-            Gets or sets the default log level.
-            </summary>
-        </member>
-        <member name="P:NLog.NLogTraceListener.ForceLogLevel">
-            <summary>
-            Gets or sets the log which should be always used regardless of source level.
-            </summary>
-        </member>
-        <member name="P:NLog.NLogTraceListener.DisableFlush">
-            <summary>
-            Gets or sets a value indicating whether flush calls from trace sources should be ignored.
-            </summary>
-        </member>
-        <member name="P:NLog.NLogTraceListener.IsThreadSafe">
-            <summary>
-            Gets a value indicating whether the trace listener is thread safe.
-            </summary>
-            <value></value>
-            <returns>true if the trace listener is thread safe; otherwise, false. The default is false.</returns>
-        </member>
-        <member name="P:NLog.NLogTraceListener.AutoLoggerName">
-            <summary>
-            Gets or sets a value indicating whether to use auto logger name detected from the stack trace.
-            </summary>
-        </member>
-        <member name="M:NLog.NLogTraceListener.Write(System.String)">
-            <summary>
-            When overridden in a derived class, writes the specified message to the listener you create in the derived class.
-            </summary>
-            <param name="message">A message to write.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.WriteLine(System.String)">
-            <summary>
-            When overridden in a derived class, writes a message to the listener you create in the derived class, followed by a line terminator.
-            </summary>
-            <param name="message">A message to write.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.Close">
-            <summary>
-            When overridden in a derived class, closes the output stream so it no longer receives tracing or debugging output.
-            </summary>
-        </member>
-        <member name="M:NLog.NLogTraceListener.Fail(System.String)">
-            <summary>
-            Emits an error message.
-            </summary>
-            <param name="message">A message to emit.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.Fail(System.String,System.String)">
-            <summary>
-            Emits an error message and a detailed error message.
-            </summary>
-            <param name="message">A message to emit.</param>
-            <param name="detailMessage">A detailed message to emit.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.Flush">
-            <summary>
-            Flushes the output (if <see cref="P:NLog.NLogTraceListener.DisableFlush"/> is not <c>true</c>) buffer with the default timeout of 15 seconds.
-            </summary>
-        </member>
-        <member name="M:NLog.NLogTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object)">
-            <summary>
-            Writes trace information, a data object and event information to the listener specific output.
-            </summary>
-            <param name="eventCache">A <see cref="T:System.Diagnostics.TraceEventCache"/> object that contains the current process ID, thread ID, and stack trace information.</param>
-            <param name="source">A name used to identify the output, typically the name of the application that generated the trace event.</param>
-            <param name="eventType">One of the <see cref="T:System.Diagnostics.TraceEventType"/> values specifying the type of event that has caused the trace.</param>
-            <param name="id">A numeric identifier for the event.</param>
-            <param name="data">The trace data to emit.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object[])">
-            <summary>
-            Writes trace information, an array of data objects and event information to the listener specific output.
-            </summary>
-            <param name="eventCache">A <see cref="T:System.Diagnostics.TraceEventCache"/> object that contains the current process ID, thread ID, and stack trace information.</param>
-            <param name="source">A name used to identify the output, typically the name of the application that generated the trace event.</param>
-            <param name="eventType">One of the <see cref="T:System.Diagnostics.TraceEventType"/> values specifying the type of event that has caused the trace.</param>
-            <param name="id">A numeric identifier for the event.</param>
-            <param name="data">An array of objects to emit as data.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32)">
-            <summary>
-            Writes trace and event information to the listener specific output.
-            </summary>
-            <param name="eventCache">A <see cref="T:System.Diagnostics.TraceEventCache"/> object that contains the current process ID, thread ID, and stack trace information.</param>
-            <param name="source">A name used to identify the output, typically the name of the application that generated the trace event.</param>
-            <param name="eventType">One of the <see cref="T:System.Diagnostics.TraceEventType"/> values specifying the type of event that has caused the trace.</param>
-            <param name="id">A numeric identifier for the event.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])">
-            <summary>
-            Writes trace information, a formatted array of objects and event information to the listener specific output.
-            </summary>
-            <param name="eventCache">A <see cref="T:System.Diagnostics.TraceEventCache"/> object that contains the current process ID, thread ID, and stack trace information.</param>
-            <param name="source">A name used to identify the output, typically the name of the application that generated the trace event.</param>
-            <param name="eventType">One of the <see cref="T:System.Diagnostics.TraceEventType"/> values specifying the type of event that has caused the trace.</param>
-            <param name="id">A numeric identifier for the event.</param>
-            <param name="format">A format string that contains zero or more format items, which correspond to objects in the <paramref name="args"/> array.</param>
-            <param name="args">An object array containing zero or more objects to format.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String)">
-            <summary>
-            Writes trace information, a message, and event information to the listener specific output.
-            </summary>
-            <param name="eventCache">A <see cref="T:System.Diagnostics.TraceEventCache"/> object that contains the current process ID, thread ID, and stack trace information.</param>
-            <param name="source">A name used to identify the output, typically the name of the application that generated the trace event.</param>
-            <param name="eventType">One of the <see cref="T:System.Diagnostics.TraceEventType"/> values specifying the type of event that has caused the trace.</param>
-            <param name="id">A numeric identifier for the event.</param>
-            <param name="message">A message to write.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.TraceTransfer(System.Diagnostics.TraceEventCache,System.String,System.Int32,System.String,System.Guid)">
-            <summary>
-            Writes trace information, a message, a related activity identity and event information to the listener specific output.
-            </summary>
-            <param name="eventCache">A <see cref="T:System.Diagnostics.TraceEventCache"/> object that contains the current process ID, thread ID, and stack trace information.</param>
-            <param name="source">A name used to identify the output, typically the name of the application that generated the trace event.</param>
-            <param name="id">A numeric identifier for the event.</param>
-            <param name="message">A message to write.</param>
-            <param name="relatedActivityId">A <see cref="T:System.Guid"/>  object identifying a related activity.</param>
-        </member>
-        <member name="M:NLog.NLogTraceListener.GetSupportedAttributes">
-            <summary>
-            Gets the custom attributes supported by the trace listener.
-            </summary>
-            <returns>
-            A string array naming the custom attributes supported by the trace listener, or null if there are no custom attributes.
-            </returns>
-        </member>
-        <member name="M:NLog.NLogTraceListener.TranslateLogLevel(System.Diagnostics.TraceEventType)">
-            <summary>
-            Translates the event type to level from <see cref="T:System.Diagnostics.TraceEventType"/>.
-            </summary>
-            <param name="eventType">Type of the event.</param>
-            <returns>Translated log level.</returns>
-        </member>
-        <member name="M:NLog.NLogTraceListener.ProcessLogEventInfo(NLog.LogLevel,System.String,System.String,System.Object[],System.Nullable{System.Int32},System.Nullable{System.Diagnostics.TraceEventType},System.Nullable{System.Guid})">
-            <summary>
-            Process the log event
-            <param name="logLevel">The log level.</param>
-            <param name="loggerName">The name of the logger.</param>
-            <param name="message">The log message.</param>
-            <param name="arguments">The log parameters.</param>
-            <param name="eventId">The event id.</param>
-            <param name="eventType">The event type.</param>
-            <param name="relatedActivityId">The related activity id.</param>
-            </summary>
         </member>
         <member name="T:NLog.NullLogger">
             <summary>
@@ -22381,52 +21751,6 @@
             Initializes a new instance of the <see cref="T:NLog.Targets.DateAndSequenceArchive"/> class.
             </summary>
         </member>
-        <member name="T:NLog.Targets.DebuggerTarget">
-            <summary>
-            Writes log messages to the attached managed debugger.
-            </summary>
-            <remarks>
-            <a href="https://github.com/NLog/NLog/wiki/Debugger-target">See NLog Wiki</a>
-            </remarks>
-            <seealso href="https://github.com/NLog/NLog/wiki/Debugger-target">Documentation on NLog Wiki</seealso>
-            <example>
-            <p>
-            To set up the target in the <a href="https://github.com/NLog/NLog/wiki/Configuration-file">configuration file</a>, 
-            use the following syntax:
-            </p>
-            <code lang="XML" source="examples/targets/Configuration File/Debugger/NLog.config" />
-            <p>
-            To set up the log target programmatically use code like this:
-            </p>
-            <code lang="C#" source="examples/targets/Configuration API/Debugger/Simple/Example.cs" />
-            </example>
-        </member>
-        <member name="M:NLog.Targets.DebuggerTarget.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.DebuggerTarget" /> class.
-            </summary>
-            <remarks>
-            The default value of the layout is: <code>${longdate}|${level:uppercase=true}|${logger}|${message:withexception=true}</code>
-            </remarks>
-        </member>
-        <member name="M:NLog.Targets.DebuggerTarget.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.DebuggerTarget" /> class.
-            </summary>
-            <remarks>
-            The default value of the layout is: <code>${longdate}|${level:uppercase=true}|${logger}|${message:withexception=true}</code>
-            </remarks>
-            <param name="name">Name of the target.</param>
-        </member>
-        <member name="M:NLog.Targets.DebuggerTarget.InitializeTarget">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.DebuggerTarget.CloseTarget">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.DebuggerTarget.Write(NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
         <member name="T:NLog.Targets.DebugSystemTarget">
             <summary>
             Outputs log messages through <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)" />
@@ -22606,248 +21930,6 @@
             <param name="escapeUnicode">Should non-ASCII characters be encoded</param>
             <param name="escapeForwardSlash"></param>
             <returns>JSON escaped string</returns>
-        </member>
-        <member name="T:NLog.Targets.EventLogTarget">
-            <summary>
-            Writes log message to the Event Log.
-            </summary>
-            <remarks>
-            <a href="https://github.com/nlog/nlog/wiki/EventLog-target">See NLog Wiki</a>
-            </remarks>
-            <seealso href="https://github.com/nlog/nlog/wiki/EventLog-target">Documentation on NLog Wiki</seealso>
-            <example>
-            <p>
-            To set up the target in the <a href="https://github.com/NLog/NLog/wiki/Configuration-file">configuration file</a>, 
-            use the following syntax:
-            </p>
-            <code lang="XML" source="examples/targets/Configuration File/EventLog/NLog.config" />
-            <p>
-            To set up the log target programmatically use code like this:
-            </p>
-            <code lang="C#" source="examples/targets/Configuration API/EventLog/Simple/Example.cs" />
-            </example>
-        </member>
-        <member name="F:NLog.Targets.EventLogTarget.EventLogMaxMessageLength">
-            <summary>
-            Max size in characters (limitation of the EventLog API).
-            </summary>
-            <seealso href="https://docs.microsoft.com/en-gb/windows/win32/api/winbase/nf-winbase-reporteventw"/>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.EventLogTarget"/> class.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.EventLogTarget"/> class.
-            </summary>
-            <param name="name">Name of the target.</param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.#ctor(NLog.Targets.EventLogTarget.IEventLogWrapper,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.EventLogTarget"/> class.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.MachineName">
-            <summary>
-            Gets or sets the name of the machine on which Event Log service is running.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.EventId">
-            <summary>
-            Gets or sets the layout that renders event ID.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.Category">
-            <summary>
-            Gets or sets the layout that renders event Category.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.EntryType">
-            <summary>
-            Optional entry type. When not set, or when not convertible to <see cref="T:System.Diagnostics.EventLogEntryType"/> then determined by <see cref="T:NLog.LogLevel"/>
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.Source">
-            <summary>
-            Gets or sets the value to be used as the event Source.
-            </summary>
-            <remarks>
-            By default this is the friendly name of the current AppDomain.
-            </remarks>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.Log">
-            <summary>
-            Gets or sets the name of the Event Log to write to. This can be System, Application or any user-defined name.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.MaxMessageLength">
-            <summary>
-            Gets or sets the message length limit to write to the Event Log.
-            </summary>
-            <remarks><value>MaxMessageLength</value> cannot be zero or negative</remarks>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.MaxKilobytes">
-            <summary>
-            Gets or sets the maximum Event log size in kilobytes.
-            </summary>
-            <remarks>
-            <value>MaxKilobytes</value> cannot be less than 64 or greater than 4194240 or not a multiple of 64.
-            If <c>null</c>, the value will not be specified while creating the Event log.
-            </remarks>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.OnOverflow">
-            <summary>
-            Gets or sets the action to take if the message is larger than the <see cref="P:NLog.Targets.EventLogTarget.MaxMessageLength"/> option.
-            </summary>
-            <docgen category='Event Log Options' order='100' />
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.Install(NLog.Config.InstallationContext)">
-            <summary>
-            Performs installation which requires administrative permissions.
-            </summary>
-            <param name="installationContext">The installation context.</param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.Uninstall(NLog.Config.InstallationContext)">
-            <summary>
-            Performs uninstallation which requires administrative permissions.
-            </summary>
-            <param name="installationContext">The installation context.</param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IsInstalled(NLog.Config.InstallationContext)">
-            <summary>
-            Determines whether the item is installed.
-            </summary>
-            <param name="installationContext">The installation context.</param>
-            <returns>
-            Value indicating whether the item is installed or null if it is not possible to determine.
-            </returns>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.InitializeTarget">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.Write(NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.GetEntryType(NLog.LogEventInfo)">
-            <summary>
-            Get the entry type for logging the message.
-            </summary>
-            <param name="logEvent">The logging event - for rendering the <see cref="P:NLog.Targets.EventLogTarget.EntryType"/></param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.GetFixedSource">
-            <summary>
-            Get the source, if and only if the source is fixed.
-            </summary>
-            <returns><c>null</c> when not <see cref="P:NLog.Layouts.SimpleLayout.IsFixedText"/></returns>
-            <remarks>Internal for unit tests</remarks>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.CreateEventSourceIfNeeded(System.String,System.Boolean)">
-            <summary>
-            (re-)create an event source, if it isn't there. Works only with fixed source names.
-            </summary>
-            <param name="fixedSource">The source name. If source is not fixed (see <see cref="P:NLog.Layouts.SimpleLayout.IsFixedText"/>, then pass <c>null</c> or <see cref="F:System.String.Empty"/>.</param>
-            <param name="alwaysThrowError">always throw an Exception when there is an error</param>
-        </member>
-        <member name="T:NLog.Targets.EventLogTarget.IEventLogWrapper">
-            <summary>
-            A wrapper for Windows event log.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.Source">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.Source"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.Log">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.Log"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.MachineName">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.MachineName"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.MaximumKilobytes">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.MaximumKilobytes"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.IsEventLogAssociated">
-            <summary>
-            Indicates whether an event log instance is associated.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.WriteEntry(System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16)">
-            <summary>
-            A wrapper for the method <see cref="M:System.Diagnostics.EventLog.WriteEntry(System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.AssociateNewEventLog(System.String,System.String,System.String)">
-            <summary>
-            Creates a new association with an instance of the event log.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.DeleteEventSource(System.String,System.String)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.DeleteEventSource(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.SourceExists(System.String,System.String)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.SourceExists(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.LogNameFromSourceName(System.String,System.String)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.LogNameFromSourceName(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.CreateEventSource(System.Diagnostics.EventSourceCreationData)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.CreateEventSource(System.Diagnostics.EventSourceCreationData)"/>.
-            </summary>
-        </member>
-        <member name="T:NLog.Targets.EventLogTarget.EventLogWrapper">
-            <summary>
-            The implementation of <see cref="T:NLog.Targets.EventLogTarget.IEventLogWrapper"/>, that uses Windows <see cref="T:System.Diagnostics.EventLog"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.EventLogWrapper.AssociateNewEventLog(System.String,System.String,System.String)">
-            <summary>
-            Creates a new association with an instance of Windows <see cref="T:System.Diagnostics.EventLog"/>.
-            </summary>
-        </member>
-        <member name="T:NLog.Targets.EventLogTargetOverflowAction">
-            <summary>
-            Action that should be taken if the message is greater than
-            the max message size allowed by the Event Log.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.EventLogTargetOverflowAction.Truncate">
-            <summary>
-            Truncate the message before writing to the Event Log.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.EventLogTargetOverflowAction.Split">
-            <summary>
-            Split the message and write multiple entries to the Event Log.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.EventLogTargetOverflowAction.Discard">
-            <summary>
-            Discard of the message. It will not be written to the Event Log.
-            </summary>
         </member>
         <member name="M:NLog.Targets.FileArchiveModes.FileArchiveModeBase.AttemptCleanupOnInitializeFile(System.String,System.Int32,System.Int32)">
             <summary>
@@ -24082,261 +23164,6 @@
         <member name="M:NLog.Targets.LineEndingMode.LineEndingModeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
             <inheritdoc/>
         </member>
-        <member name="T:NLog.Targets.MailTarget">
-            <summary>
-            Sends log messages by email using SMTP protocol.
-            </summary>
-            <remarks>
-            <a href="https://github.com/nlog/nlog/wiki/Mail-target">See NLog Wiki</a>
-            </remarks>
-            <seealso href="https://github.com/nlog/nlog/wiki/Mail-target">Documentation on NLog Wiki</seealso>
-            <example>
-            <p>
-            To set up the target in the <a href="https://github.com/NLog/NLog/wiki/Configuration-file">configuration file</a>, 
-            use the following syntax:
-            </p>
-            <code lang="XML" source="examples/targets/Configuration File/Mail/Simple/NLog.config" />
-            <p>
-            To set up the log target programmatically use code like this:
-            </p>
-            <code lang="C#" source="examples/targets/Configuration API/Mail/Simple/Example.cs" />
-            <p>
-            Mail target works best when used with BufferingWrapper target
-            which lets you send multiple log messages in single mail
-            </p>
-            <p>
-            To set up the buffered mail target in the <a href="https://github.com/NLog/NLog/wiki/Configuration-file">configuration file</a>, 
-            use the following syntax:
-            </p>
-            <code lang="XML" source="examples/targets/Configuration File/Mail/Buffered/NLog.config" />
-            <p>
-            To set up the buffered mail target programmatically use code like this:
-            </p>
-            <code lang="C#" source="examples/targets/Configuration API/Mail/Buffered/Example.cs" />
-            </example>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.MailTarget" /> class.
-            </summary>
-            <remarks>
-            The default value of the layout is: <code>${longdate}|${level:uppercase=true}|${logger}|${message:withexception=true}</code>
-            </remarks>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.MailTarget" /> class.
-            </summary>
-            <remarks>
-            The default value of the layout is: <code>${longdate}|${level:uppercase=true}|${logger}|${message:withexception=true}</code>
-            </remarks>
-            <param name="name">Name of the target.</param>
-        </member>
-        <member name="P:NLog.Targets.MailTarget.SmtpSection">
-            <summary>
-            Gets the mailSettings/smtp configuration from app.config in cases when we need those configuration.
-            E.g when UseSystemNetMailSettings is enabled and we need to read the From attribute from system.net/mailSettings/smtp
-            </summary>
-            <remarks>Internal for mocking</remarks>
-        </member>
-        <member name="P:NLog.Targets.MailTarget.From">
-            <summary>
-            Gets or sets sender's email address (e.g. joe@domain.com).
-            </summary>
-            <docgen category='Message Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.To">
-            <summary>
-            Gets or sets recipients' email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).
-            </summary>
-            <docgen category='Message Options' order='11' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.CC">
-            <summary>
-            Gets or sets CC email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).
-            </summary>
-            <docgen category='Message Options' order='12' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.Bcc">
-            <summary>
-            Gets or sets BCC email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).
-            </summary>
-            <docgen category='Message Options' order='13' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.AddNewLines">
-            <summary>
-            Gets or sets a value indicating whether to add new lines between log entries.
-            </summary>
-            <value>A value of <c>true</c> if new lines should be added; otherwise, <c>false</c>.</value>
-            <docgen category='Message Options' order='99' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.Subject">
-            <summary>
-            Gets or sets the mail subject.
-            </summary>
-            <docgen category='Message Options' order='5' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.Body">
-            <summary>
-            Gets or sets mail message body (repeated for each log message send in one mail).
-            </summary>
-            <remarks>Alias for the <c>Layout</c> property.</remarks>
-            <docgen category='Message Options' order='6' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.Encoding">
-            <summary>
-            Gets or sets encoding to be used for sending e-mail.
-            </summary>
-            <docgen category='Message Options' order='20' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.Html">
-            <summary>
-            Gets or sets a value indicating whether to send message as HTML instead of plain text.
-            </summary>
-            <docgen category='Message Options' order='11' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.SmtpServer">
-            <summary>
-            Gets or sets SMTP Server to be used for sending.
-            </summary>
-            <docgen category='SMTP Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.SmtpAuthentication">
-            <summary>
-            Gets or sets SMTP Authentication mode.
-            </summary>
-            <docgen category='SMTP Options' order='11' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.SmtpUserName">
-            <summary>
-            Gets or sets the username used to connect to SMTP server (used when SmtpAuthentication is set to "basic").
-            </summary>
-            <docgen category='SMTP Options' order='12' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.SmtpPassword">
-            <summary>
-            Gets or sets the password used to authenticate against SMTP server (used when SmtpAuthentication is set to "basic").
-            </summary>
-            <docgen category='SMTP Options' order='13' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.EnableSsl">
-            <summary>
-            Gets or sets a value indicating whether SSL (secure sockets layer) should be used when communicating with SMTP server.
-            </summary>
-            <docgen category='SMTP Options' order='14' />.
-        </member>
-        <member name="P:NLog.Targets.MailTarget.SmtpPort">
-            <summary>
-            Gets or sets the port number that SMTP Server is listening on.
-            </summary>
-            <docgen category='SMTP Options' order='15' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.UseSystemNetMailSettings">
-            <summary>
-            Gets or sets a value indicating whether the default Settings from System.Net.MailSettings should be used.
-            </summary>
-            <docgen category='SMTP Options' order='16' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.DeliveryMethod">
-            <summary>
-            Specifies how outgoing email messages will be handled.
-            </summary>
-            <docgen category='SMTP Options' order='18' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.PickupDirectoryLocation">
-            <summary>
-            Gets or sets the folder where applications save mail messages to be processed by the local SMTP server.
-            </summary>
-            <docgen category='SMTP Options' order='17' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.Priority">
-            <summary>
-            Gets or sets the priority used for sending mails.
-            </summary>
-            <docgen category='Message Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.ReplaceNewlineWithBrTagInHtml">
-            <summary>
-            Gets or sets a value indicating whether NewLine characters in the body should be replaced with <br/> tags.
-            </summary>
-            <remarks>Only happens when <see cref="P:NLog.Targets.MailTarget.Html"/> is set to true.</remarks>
-            <docgen category='Message Options' order='100' />
-        </member>
-        <member name="P:NLog.Targets.MailTarget.Timeout">
-            <summary>
-            Gets or sets a value indicating the SMTP client timeout.
-            </summary>
-            <remarks>Warning: zero is not infinite waiting</remarks>
-            <docgen category='SMTP Options' order='100' />
-        </member>
-        <member name="M:NLog.Targets.MailTarget.Write(NLog.Common.AsyncLogEventInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.Write(System.Collections.Generic.IList{NLog.Common.AsyncLogEventInfo})">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.InitializeTarget">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.ProcessSingleMailMessage(System.Collections.Generic.IEnumerable{NLog.Common.AsyncLogEventInfo})">
-            <summary>
-            Create mail and send with SMTP
-            </summary>
-            <param name="events">event printed in the body of the event</param>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.CreateBodyBuffer(System.Collections.Generic.IEnumerable{NLog.Common.AsyncLogEventInfo},NLog.LogEventInfo,NLog.LogEventInfo)">
-            <summary>
-            Create buffer for body
-            </summary>
-            <param name="events">all events</param>
-            <param name="firstEvent">first event for header</param>
-            <param name="lastEvent">last event for footer</param>
-            <returns></returns>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.ConfigureMailClient(NLog.LogEventInfo,NLog.Internal.ISmtpClient)">
-            <summary>
-            Set properties of <paramref name="client"/>
-            </summary>
-            <param name="lastEvent">last event for username/password</param>
-            <param name="client">client to set properties on</param>
-            <remarks>Configure not at <see cref="M:NLog.Targets.MailTarget.InitializeTarget"/>, as the properties could have layout renderers.</remarks>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.ConvertDirectoryLocation(System.String)">
-            <summary>
-            Handle <paramref name="pickupDirectoryLocation"/> if it is a virtual directory.
-            </summary>
-            <param name="pickupDirectoryLocation"></param>
-            <returns></returns>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.GetSmtpSettingsKey(NLog.LogEventInfo)">
-             <summary>
-             Create key for grouping. Needed for multiple events in one mail message
-             </summary>
-             <param name="logEvent">event for rendering layouts   </param>  
-            <returns>string to group on</returns>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.AppendLayout(System.Text.StringBuilder,NLog.LogEventInfo,NLog.Layouts.Layout)">
-            <summary>
-            Append rendered <paramref name="layout"/> to <paramref name="sb"/>
-            </summary>
-            <param name="sb">append to this</param>
-            <param name="logEvent">event for rendering <paramref name="layout"/></param>
-            <param name="layout">append if not <c>null</c></param>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.CreateMailMessage(NLog.LogEventInfo,System.String)">
-            <summary>
-            Create the mail message with the addresses, properties and body.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.MailTarget.AddAddresses(System.Net.Mail.MailAddressCollection,NLog.Layouts.Layout,NLog.LogEventInfo)">
-            <summary>
-            Render  <paramref name="layout"/> and add the addresses to <paramref name="mailAddressCollection"/>
-            </summary>
-            <param name="mailAddressCollection">Addresses appended to this list</param>
-            <param name="layout">layout with addresses, ; separated</param>
-            <param name="logEvent">event for rendering the <paramref name="layout"/></param>
-            <returns>added a address?</returns>
-        </member>
         <member name="T:NLog.Targets.MemoryTarget">
             <summary>
             Writes log messages to <see cref="P:NLog.Targets.MemoryTarget.Logs"/> in memory for programmatic retrieval.
@@ -25096,26 +23923,6 @@
             discards the results.
             </summary>
             <param name="logEvent">The logging event.</param>
-        </member>
-        <member name="T:NLog.Targets.SmtpAuthenticationMode">
-            <summary>
-            SMTP authentication modes.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.SmtpAuthenticationMode.None">
-            <summary>
-            No authentication.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.SmtpAuthenticationMode.Basic">
-            <summary>
-            Basic - username and password.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.SmtpAuthenticationMode.Ntlm">
-            <summary>
-            NTLM Authentication.
-            </summary>
         </member>
         <member name="T:NLog.Targets.Target">
             <summary>

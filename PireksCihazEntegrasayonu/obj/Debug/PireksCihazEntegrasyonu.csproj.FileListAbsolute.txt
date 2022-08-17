@@ -2,14 +2,11 @@ C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayon
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\PireksCihazEntegrasyonu.exe.config
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\PireksCihazEntegrasyonu.exe
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\PireksCihazEntegrasyonu.pdb
-C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\EntityFramework.dll
-C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\NLog.dll
-C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\EntityFramework.xml
-C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\bin\Debug\NLog.xml
+C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csprojAssemblyReference.cache
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.DeviceUI.DeviceSettingsForm.resources
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.DeviceUI.TunaylarLoadLine3UserControl.resources
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.MainForm.resources
@@ -19,4 +16,3 @@ C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayon
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csproj.CopyComplete
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.exe
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.pdb
-C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csprojAssemblyReference.cache

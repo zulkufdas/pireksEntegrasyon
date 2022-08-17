@@ -4649,30 +4649,6 @@
             The assembly that is trying to load.
             </summary>
         </member>
-        <member name="T:NLog.Config.ConfigSectionHandler">
-            <summary>
-            Class for providing Nlog configuration xml code from app.config
-            to <see cref="T:NLog.Config.XmlLoggingConfiguration"/>
-            </summary>
-        </member>
-        <member name="M:NLog.Config.ConfigSectionHandler.DeserializeElement(System.Xml.XmlReader,System.Boolean)">
-            <summary>
-            Overriding base implementation to just store <see cref="T:System.Xml.XmlReader"/>
-            of the relevant app.config section.
-            </summary>
-            <param name="reader">The XmlReader that reads from the configuration file.</param>
-            <param name="serializeCollectionKey">true to serialize only the collection key properties; otherwise, false.</param>
-        </member>
-        <member name="M:NLog.Config.ConfigSectionHandler.GetRuntimeObject">
-            <summary>
-            Override base implementation to return a <see cref="T:NLog.Config.LoggingConfiguration"/> object
-            for <see cref="M:System.Configuration.ConfigurationManager.GetSection(System.String)"/>
-            instead of the <see cref="T:NLog.Config.ConfigSectionHandler"/> instance.
-            </summary>
-            <returns>
-            A <see cref="T:NLog.Config.LoggingConfiguration"/> instance, that has been deserialized from app.config.
-            </returns>
-        </member>
         <member name="T:NLog.Config.ConfigurationItemCreator">
             <summary>
             Constructs a new instance the configuration item (target, layout, layout renderer, etc.) given its type.
@@ -6625,12 +6601,6 @@
             <param name="xml">NLog configuration in XML to be parsed</param>
             <param name="logFactory">NLog LogFactory</param>
         </member>
-        <member name="P:NLog.Config.XmlLoggingConfiguration.AppConfig">
-            <summary>
-            Gets the default <see cref="T:NLog.Config.LoggingConfiguration" /> object by parsing 
-            the application configuration file (<c>app.exe.config</c>).
-            </summary>
-        </member>
         <member name="P:NLog.Config.XmlLoggingConfiguration.InitializeSucceeded">
             <summary>
             Did the <see cref="M:NLog.Config.XmlLoggingConfiguration.Initialize(System.Xml.XmlReader,System.String,System.Boolean)"/> Succeeded? <c>true</c>= success, <c>false</c>= error, <c>null</c> = initialize not started yet.
@@ -7596,7 +7566,7 @@
         </member>
         <member name="M:NLog.Fluent.Log.Level(NLog.LogLevel,System.String)">
             <summary>
-            Starts building a log event with the specified <see cref="T:System.LogLevel" />.
+            Starts building a log event with the specified <see cref="T:NLog.LogLevel" />.
             </summary>
             <param name="logLevel">The log level.</param>
             <param name="callerFilePath">The full path of the source file that contains the caller. This is the file path at the time of compile.</param>
@@ -8364,16 +8334,6 @@
         <member name="M:NLog.Internal.Fakeables.AppEnvironmentWrapper.LoadXmlFile(System.String)">
             <inheritdoc/>
         </member>
-        <member name="T:NLog.Internal.IConfigurationManager">
-            <summary>
-            Interface for the wrapper around System.Configuration.ConfigurationManager.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.IConfigurationManager.AppSettings">
-            <summary>
-            Gets the wrapper around ConfigurationManager.AppSettings.
-            </summary>
-        </member>
         <member name="T:NLog.Internal.ILogMessageFormatter">
             <summary>
             Format a log message
@@ -8949,13 +8909,6 @@
         </member>
         <member name="M:NLog.Internal.SortHelpers.ReadOnlySingleBucketDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
             <summary>Will always throw, as dictionary is readonly</summary>
-        </member>
-        <member name="T:NLog.Internal.ConfigurationManager">
-            <summary>
-            Internal configuration manager used to read .NET configuration files.
-            Just a wrapper around the BCL ConfigurationManager, but used to enable
-            unit testing.
-            </summary>
         </member>
         <member name="F:NLog.Internal.EncodingHelpers.Utf8BOM">
             <summary>
@@ -9649,66 +9602,6 @@
             Instance of <see cref="T:NLog.Internal.FileAppenders.BaseFileAppender"/> which can be used to write to the file.
             </returns>
         </member>
-        <member name="T:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender">
-            <summary>
-            Provides a multi process-safe atomic file append while
-            keeping the files open.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.#ctor(System.String,NLog.Internal.FileAppenders.ICreateFileParameters)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender" /> class.
-            </summary>
-            <param name="fileName">Name of the file.</param>
-            <param name="parameters">The parameters.</param>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.CreateAppendOnlyFile(System.String)">
-            <summary>
-            Creates or opens a file in a special mode, so that writes are automatically
-            as atomic writes at the file end.
-            See also "UnixMultiProcessFileAppender" which does a similar job on *nix platforms.
-            </summary>
-            <param name="fileName">File to create or open</param>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Write(System.Byte[],System.Int32,System.Int32)">
-            <summary>
-            Writes the specified bytes.
-            </summary>
-            <param name="bytes">The bytes array.</param>
-            <param name="offset">The bytes array offset.</param>
-            <param name="count">The number of bytes.</param>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Close">
-            <summary>
-            Closes this instance.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Flush">
-            <summary>
-            Flushes this instance.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.GetFileLength">
-            <summary>
-            Gets the length in bytes of the file associated with the appender.
-            </summary>
-            <returns>A long value representing the length of the file in bytes.</returns>
-        </member>
-        <member name="T:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Factory">
-            <summary>
-            Factory class.
-            </summary>
-        </member>
-        <member name="M:NLog.Internal.FileAppenders.WindowsMultiProcessFileAppender.Factory.NLog#Internal#FileAppenders#IFileAppenderFactory#Open(System.String,NLog.Internal.FileAppenders.ICreateFileParameters)">
-            <summary>
-            Opens the appender for given file name and parameters.
-            </summary>
-            <param name="fileName">Name of the file.</param>
-            <param name="parameters">Creation parameters.</param>
-            <returns>
-            Instance of <see cref="T:NLog.Internal.FileAppenders.BaseFileAppender"/> which can be used to write to the file.
-            </returns>
-        </member>
         <member name="T:NLog.Internal.FilePathLayout">
             <summary>
             A layout that represents a filePath. 
@@ -10302,11 +10195,6 @@
         <member name="P:NLog.Internal.PlatformDetector.IsUnix">
             <summary>
             Gets a value indicating whether current OS is Unix-based.
-            </summary>
-        </member>
-        <member name="P:NLog.Internal.PlatformDetector.IsMono">
-            <summary>
-            Gets a value indicating whether current runtime is Mono-based
             </summary>
         </member>
         <member name="T:NLog.Internal.ObjectGraphScanner">
@@ -11121,41 +11009,6 @@
             <inheritdoc/>
         </member>
         <member name="M:NLog.LayoutRenderers.AppDomainLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="T:NLog.LayoutRenderers.AppSettingLayoutRenderer">
-            <summary>
-            Application setting.
-            </summary>
-            <remarks>
-            Use this layout renderer to insert the value of an application setting
-            stored in the application's App.config or Web.config file.
-            </remarks>
-            <code lang="NLog Layout Renderer">
-            ${appsetting:item=mysetting:default=mydefault} - produces "mydefault" if no appsetting
-            </code>
-        </member>
-        <member name="P:NLog.LayoutRenderers.AppSettingLayoutRenderer.Item">
-            <summary>
-             The AppSetting item-name
-            </summary>
-             <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="P:NLog.LayoutRenderers.AppSettingLayoutRenderer.Name">
-            <summary>
-             The AppSetting item-name
-            </summary>
-        </member>
-        <member name="P:NLog.LayoutRenderers.AppSettingLayoutRenderer.Default">
-            <summary>
-             The default value to render if the AppSetting value is null.
-            </summary>
-             <docgen category='Layout Options' order='10' />
-        </member>
-        <member name="M:NLog.LayoutRenderers.AppSettingLayoutRenderer.InitializeLayoutRenderer">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.LayoutRenderers.AppSettingLayoutRenderer.Append(System.Text.StringBuilder,NLog.LogEventInfo)">
             <inheritdoc/>
         </member>
         <member name="T:NLog.LayoutRenderers.AssemblyVersionLayoutRenderer">
@@ -22607,248 +22460,6 @@
             <param name="escapeForwardSlash"></param>
             <returns>JSON escaped string</returns>
         </member>
-        <member name="T:NLog.Targets.EventLogTarget">
-            <summary>
-            Writes log message to the Event Log.
-            </summary>
-            <remarks>
-            <a href="https://github.com/nlog/nlog/wiki/EventLog-target">See NLog Wiki</a>
-            </remarks>
-            <seealso href="https://github.com/nlog/nlog/wiki/EventLog-target">Documentation on NLog Wiki</seealso>
-            <example>
-            <p>
-            To set up the target in the <a href="https://github.com/NLog/NLog/wiki/Configuration-file">configuration file</a>, 
-            use the following syntax:
-            </p>
-            <code lang="XML" source="examples/targets/Configuration File/EventLog/NLog.config" />
-            <p>
-            To set up the log target programmatically use code like this:
-            </p>
-            <code lang="C#" source="examples/targets/Configuration API/EventLog/Simple/Example.cs" />
-            </example>
-        </member>
-        <member name="F:NLog.Targets.EventLogTarget.EventLogMaxMessageLength">
-            <summary>
-            Max size in characters (limitation of the EventLog API).
-            </summary>
-            <seealso href="https://docs.microsoft.com/en-gb/windows/win32/api/winbase/nf-winbase-reporteventw"/>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.EventLogTarget"/> class.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.EventLogTarget"/> class.
-            </summary>
-            <param name="name">Name of the target.</param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.#ctor(NLog.Targets.EventLogTarget.IEventLogWrapper,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:NLog.Targets.EventLogTarget"/> class.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.MachineName">
-            <summary>
-            Gets or sets the name of the machine on which Event Log service is running.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.EventId">
-            <summary>
-            Gets or sets the layout that renders event ID.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.Category">
-            <summary>
-            Gets or sets the layout that renders event Category.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.EntryType">
-            <summary>
-            Optional entry type. When not set, or when not convertible to <see cref="T:System.Diagnostics.EventLogEntryType"/> then determined by <see cref="T:NLog.LogLevel"/>
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.Source">
-            <summary>
-            Gets or sets the value to be used as the event Source.
-            </summary>
-            <remarks>
-            By default this is the friendly name of the current AppDomain.
-            </remarks>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.Log">
-            <summary>
-            Gets or sets the name of the Event Log to write to. This can be System, Application or any user-defined name.
-            </summary>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.MaxMessageLength">
-            <summary>
-            Gets or sets the message length limit to write to the Event Log.
-            </summary>
-            <remarks><value>MaxMessageLength</value> cannot be zero or negative</remarks>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.MaxKilobytes">
-            <summary>
-            Gets or sets the maximum Event log size in kilobytes.
-            </summary>
-            <remarks>
-            <value>MaxKilobytes</value> cannot be less than 64 or greater than 4194240 or not a multiple of 64.
-            If <c>null</c>, the value will not be specified while creating the Event log.
-            </remarks>
-            <docgen category='Event Log Options' order='10' />
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.OnOverflow">
-            <summary>
-            Gets or sets the action to take if the message is larger than the <see cref="P:NLog.Targets.EventLogTarget.MaxMessageLength"/> option.
-            </summary>
-            <docgen category='Event Log Options' order='100' />
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.Install(NLog.Config.InstallationContext)">
-            <summary>
-            Performs installation which requires administrative permissions.
-            </summary>
-            <param name="installationContext">The installation context.</param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.Uninstall(NLog.Config.InstallationContext)">
-            <summary>
-            Performs uninstallation which requires administrative permissions.
-            </summary>
-            <param name="installationContext">The installation context.</param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IsInstalled(NLog.Config.InstallationContext)">
-            <summary>
-            Determines whether the item is installed.
-            </summary>
-            <param name="installationContext">The installation context.</param>
-            <returns>
-            Value indicating whether the item is installed or null if it is not possible to determine.
-            </returns>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.InitializeTarget">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.Write(NLog.LogEventInfo)">
-            <inheritdoc/>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.GetEntryType(NLog.LogEventInfo)">
-            <summary>
-            Get the entry type for logging the message.
-            </summary>
-            <param name="logEvent">The logging event - for rendering the <see cref="P:NLog.Targets.EventLogTarget.EntryType"/></param>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.GetFixedSource">
-            <summary>
-            Get the source, if and only if the source is fixed.
-            </summary>
-            <returns><c>null</c> when not <see cref="P:NLog.Layouts.SimpleLayout.IsFixedText"/></returns>
-            <remarks>Internal for unit tests</remarks>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.CreateEventSourceIfNeeded(System.String,System.Boolean)">
-            <summary>
-            (re-)create an event source, if it isn't there. Works only with fixed source names.
-            </summary>
-            <param name="fixedSource">The source name. If source is not fixed (see <see cref="P:NLog.Layouts.SimpleLayout.IsFixedText"/>, then pass <c>null</c> or <see cref="F:System.String.Empty"/>.</param>
-            <param name="alwaysThrowError">always throw an Exception when there is an error</param>
-        </member>
-        <member name="T:NLog.Targets.EventLogTarget.IEventLogWrapper">
-            <summary>
-            A wrapper for Windows event log.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.Source">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.Source"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.Log">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.Log"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.MachineName">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.MachineName"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.MaximumKilobytes">
-            <summary>
-            A wrapper for the property <see cref="P:System.Diagnostics.EventLog.MaximumKilobytes"/>.
-            </summary>
-        </member>
-        <member name="P:NLog.Targets.EventLogTarget.IEventLogWrapper.IsEventLogAssociated">
-            <summary>
-            Indicates whether an event log instance is associated.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.WriteEntry(System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16)">
-            <summary>
-            A wrapper for the method <see cref="M:System.Diagnostics.EventLog.WriteEntry(System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.AssociateNewEventLog(System.String,System.String,System.String)">
-            <summary>
-            Creates a new association with an instance of the event log.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.DeleteEventSource(System.String,System.String)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.DeleteEventSource(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.SourceExists(System.String,System.String)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.SourceExists(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.LogNameFromSourceName(System.String,System.String)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.LogNameFromSourceName(System.String,System.String)"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.IEventLogWrapper.CreateEventSource(System.Diagnostics.EventSourceCreationData)">
-            <summary>
-            A wrapper for the static method <see cref="M:System.Diagnostics.EventLog.CreateEventSource(System.Diagnostics.EventSourceCreationData)"/>.
-            </summary>
-        </member>
-        <member name="T:NLog.Targets.EventLogTarget.EventLogWrapper">
-            <summary>
-            The implementation of <see cref="T:NLog.Targets.EventLogTarget.IEventLogWrapper"/>, that uses Windows <see cref="T:System.Diagnostics.EventLog"/>.
-            </summary>
-        </member>
-        <member name="M:NLog.Targets.EventLogTarget.EventLogWrapper.AssociateNewEventLog(System.String,System.String,System.String)">
-            <summary>
-            Creates a new association with an instance of Windows <see cref="T:System.Diagnostics.EventLog"/>.
-            </summary>
-        </member>
-        <member name="T:NLog.Targets.EventLogTargetOverflowAction">
-            <summary>
-            Action that should be taken if the message is greater than
-            the max message size allowed by the Event Log.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.EventLogTargetOverflowAction.Truncate">
-            <summary>
-            Truncate the message before writing to the Event Log.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.EventLogTargetOverflowAction.Split">
-            <summary>
-            Split the message and write multiple entries to the Event Log.
-            </summary>
-        </member>
-        <member name="F:NLog.Targets.EventLogTargetOverflowAction.Discard">
-            <summary>
-            Discard of the message. It will not be written to the Event Log.
-            </summary>
-        </member>
         <member name="M:NLog.Targets.FileArchiveModes.FileArchiveModeBase.AttemptCleanupOnInitializeFile(System.String,System.Int32,System.Int32)">
             <summary>
             Check if cleanup should be performed on initialize new file
@@ -24131,13 +23742,6 @@
             The default value of the layout is: <code>${longdate}|${level:uppercase=true}|${logger}|${message:withexception=true}</code>
             </remarks>
             <param name="name">Name of the target.</param>
-        </member>
-        <member name="P:NLog.Targets.MailTarget.SmtpSection">
-            <summary>
-            Gets the mailSettings/smtp configuration from app.config in cases when we need those configuration.
-            E.g when UseSystemNetMailSettings is enabled and we need to read the From attribute from system.net/mailSettings/smtp
-            </summary>
-            <remarks>Internal for mocking</remarks>
         </member>
         <member name="P:NLog.Targets.MailTarget.From">
             <summary>
