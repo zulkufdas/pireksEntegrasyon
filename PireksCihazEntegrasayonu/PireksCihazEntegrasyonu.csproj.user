@@ -4,6 +4,6 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>2+QSECOFR+ARAC+12+02KL864+2022-08-12+A+1</StartArguments>
+    <StartArguments>2+QSECOFR+URUN+2022+5</StartArguments>
   </PropertyGroup>
 </Project>

@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelGenelNetToplamBilgi = new System.Windows.Forms.Label();
+            this.buttonKaydet = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.buttonKaydet);
             this.panel2.Controls.Add(this.buttonDaraKaydet);
             this.panel2.Controls.Add(this.buttonTartimiKaydet);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -84,11 +86,11 @@
             this.buttonDaraKaydet.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonDaraKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.buttonDaraKaydet.ForeColor = System.Drawing.Color.White;
-            this.buttonDaraKaydet.Location = new System.Drawing.Point(191, 0);
+            this.buttonDaraKaydet.Location = new System.Drawing.Point(123, 0);
             this.buttonDaraKaydet.Name = "buttonDaraKaydet";
-            this.buttonDaraKaydet.Size = new System.Drawing.Size(191, 57);
+            this.buttonDaraKaydet.Size = new System.Drawing.Size(141, 57);
             this.buttonDaraKaydet.TabIndex = 0;
-            this.buttonDaraKaydet.Text = "Dara Kaydet";
+            this.buttonDaraKaydet.Text = "Dara Oku";
             this.buttonDaraKaydet.UseVisualStyleBackColor = false;
             this.buttonDaraKaydet.Click += new System.EventHandler(this.buttonDaraKaydet_Click);
             // 
@@ -100,9 +102,9 @@
             this.buttonTartimiKaydet.ForeColor = System.Drawing.Color.White;
             this.buttonTartimiKaydet.Location = new System.Drawing.Point(0, 0);
             this.buttonTartimiKaydet.Name = "buttonTartimiKaydet";
-            this.buttonTartimiKaydet.Size = new System.Drawing.Size(191, 57);
+            this.buttonTartimiKaydet.Size = new System.Drawing.Size(123, 57);
             this.buttonTartimiKaydet.TabIndex = 1;
-            this.buttonTartimiKaydet.Text = "Tartımı Kaydet";
+            this.buttonTartimiKaydet.Text = "Brüt Oku";
             this.buttonTartimiKaydet.UseVisualStyleBackColor = false;
             this.buttonTartimiKaydet.Click += new System.EventHandler(this.buttonTartimiKaydet_Click);
             // 
@@ -110,7 +112,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.Controls.Add(this.textBoxNet, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBoxDara, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxBrut, 1, 0);
@@ -138,7 +140,7 @@
             this.textBoxNet.Name = "textBoxNet";
             this.textBoxNet.Size = new System.Drawing.Size(176, 37);
             this.textBoxNet.TabIndex = 5;
-            this.textBoxNet.Text = "80,00";
+            this.textBoxNet.Text = "0";
             this.textBoxNet.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxDara
@@ -151,7 +153,7 @@
             this.textBoxDara.Name = "textBoxDara";
             this.textBoxDara.Size = new System.Drawing.Size(176, 34);
             this.textBoxDara.TabIndex = 3;
-            this.textBoxDara.Text = "20,00";
+            this.textBoxDara.Text = "0";
             this.textBoxDara.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxDara.TextChanged += new System.EventHandler(this.textBoxDara_TextChanged);
             // 
@@ -165,7 +167,7 @@
             this.textBoxBrut.Name = "textBoxBrut";
             this.textBoxBrut.Size = new System.Drawing.Size(176, 35);
             this.textBoxBrut.TabIndex = 0;
-            this.textBoxBrut.Text = "100,00";
+            this.textBoxBrut.Text = "0";
             this.textBoxBrut.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxBrut.TextChanged += new System.EventHandler(this.textBoxBrut_TextChanged);
             // 
@@ -226,8 +228,22 @@
             this.labelGenelNetToplamBilgi.Padding = new System.Windows.Forms.Padding(2);
             this.labelGenelNetToplamBilgi.Size = new System.Drawing.Size(276, 180);
             this.labelGenelNetToplamBilgi.TabIndex = 0;
-            this.labelGenelNetToplamBilgi.Text = "120,00 KG.";
+            this.labelGenelNetToplamBilgi.Text = "0,00 KG.";
             this.labelGenelNetToplamBilgi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonKaydet
+            // 
+            this.buttonKaydet.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonKaydet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonKaydet.ForeColor = System.Drawing.Color.White;
+            this.buttonKaydet.Location = new System.Drawing.Point(264, 0);
+            this.buttonKaydet.Name = "buttonKaydet";
+            this.buttonKaydet.Size = new System.Drawing.Size(116, 57);
+            this.buttonKaydet.TabIndex = 2;
+            this.buttonKaydet.Text = "Kaydet";
+            this.buttonKaydet.UseVisualStyleBackColor = false;
+            this.buttonKaydet.Click += new System.EventHandler(this.buttonKaydet_Click);
             // 
             // TunaylarLoadLine3UserControl
             // 
@@ -265,5 +281,6 @@
         private System.Windows.Forms.Button buttonTartimiKaydet;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelGenelNetToplamBilgi;
+        private System.Windows.Forms.Button buttonKaydet;
     }
 }

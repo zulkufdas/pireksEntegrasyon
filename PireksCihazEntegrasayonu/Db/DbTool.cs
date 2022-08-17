@@ -9,17 +9,17 @@ namespace PireksCihazEntegrasyonu.Db
         {
 
         }
-        public DbTool Instance { get; set; } = new Lazy<DbTool>(() => new DbTool()).Value;
+        public static DbTool Instance { get; set; } = new Lazy<DbTool>(() => new DbTool()).Value;
 
         string GetConnectionString() => System.Configuration.ConfigurationManager.ConnectionStrings["sqlConnector"].ConnectionString;
 
         SqlConnection GetConnection() => new SqlConnection(GetConnectionString());
 
 
-        public void InsertUrunTartim(int Y46Brut, int Y46Dara, int Y46Net, string Y46ETGID, string Y46TYCIP, string Y46TSGPIP, string Y46USER)
+        public void InsertUrunTartim(float Y46Brut, float Y46Dara, float Y46Net, int Y46Sirkod, int Y46ISERID, string Y46ETGID, string Y46TYCIP, string Y46TSGPIP, string Y46USER)
         {
-            string insertSql = @"Insert Into VBARLIB.TARTIMF (Y46TARYIL,Y46Brut,Y46Dara,Y46Net,Y46ETGID,Y46TYCIP,Y46TSGPIP,Y46GRDATE,Y46SENKRN,Y46USER)
-                                Values (@Y46TARYIL,@Y46Brut,@Y46Dara,@Y46Net,@Y46ETGID,@Y46TYCIP,@Y46TSGPIP,GetDate(),0,@Y46USER)";
+            string insertSql = @"Insert Into VBARLIB.TARTIMF (Y46Sirkod,Y46ISERID,Y46TARYIL,Y46Brut,Y46Dara,Y46Net,Y46ETGID,Y46TYCIP,Y46TSGPIP,Y46GRDATE,Y46SENKRN,Y46USER)
+                                Values (@Y46Sirkod,@Y46ISERID,@Y46TARYIL,@Y46Brut,@Y46Dara,@Y46Net,@Y46ETGID,@Y46TYCIP,@Y46TSGPIP,GetDate(),0,@Y46USER)";
 
             using (var connection = GetConnection())
             {
@@ -27,6 +27,8 @@ namespace PireksCihazEntegrasyonu.Db
 
                 using (SqlCommand command = new SqlCommand(insertSql, connection))
                 {
+                    command.Parameters.Add(new SqlParameter("Y46Sirkod", Y46Sirkod));
+                    command.Parameters.Add(new SqlParameter("Y46ISERID", Y46ISERID));
                     command.Parameters.Add(new SqlParameter("Y46TARYIL", DateTime.Now.Year));
                     command.Parameters.Add(new SqlParameter("Y46Brut", Y46Brut));
                     command.Parameters.Add(new SqlParameter("Y46Dara", Y46Dara));

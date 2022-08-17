@@ -72,6 +72,7 @@ namespace PireksCihazEntegrasyonu
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
+            this.Text += $" Ver. [{Application.ProductVersion}]";
             LoadDevice();
         }
 

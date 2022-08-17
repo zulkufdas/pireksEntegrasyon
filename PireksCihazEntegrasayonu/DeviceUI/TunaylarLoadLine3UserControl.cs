@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PireksCihazEntegrasyonu.Devices;
+using PireksCihazEntegrasyonu.Db;
 
 namespace PireksCihazEntegrasyonu.DeviceUI
 {
@@ -37,13 +38,14 @@ namespace PireksCihazEntegrasyonu.DeviceUI
 
         private void Device_Result(object sender, TunaylarLoadLine3Result e)
         {
-            this.Invoke( new Action(() => {
+            this.Invoke(new Action(() =>
+            {
                 if (e.IsDara)
                     textBoxDara.Text = e.Sonuc;
                 else
                     textBoxBrut.Text = e.Sonuc;
 
-            }));            
+            }));
         }
 
         protected override void DestroyHandle()
@@ -74,7 +76,8 @@ namespace PireksCihazEntegrasyonu.DeviceUI
             NetHesapla();
         }
 
-        void NetHesapla() {
+        void NetHesapla()
+        {
             try
             {
                 var brut = float.Parse(textBoxBrut.Text);
@@ -82,9 +85,34 @@ namespace PireksCihazEntegrasyonu.DeviceUI
                 var net = brut - dara;
                 textBoxNet.Text = net.ToString();
             }
-            catch {
+            catch
+            {
                 textBoxNet.Text = null;
             }
+        }
+
+        private void buttonKaydet_Click(object sender, EventArgs e)
+        {
+            Kaydet();
+        }
+
+        void Kaydet()
+        {
+
+            var argumans = ApplicationParams.Instance.GetUrunArgumans();
+
+            if (argumans == null)
+                throw new Exception("Ürün tartım için gerekli parametreler set edilmemiş!");
+
+            var brut = float.Parse(textBoxBrut.Text);
+            var dara = float.Parse(textBoxDara.Text);
+            var net = brut - dara;
+            var ip = Tools.GetIP();
+
+            DbTool.Instance.InsertUrunTartim(brut, dara, net, argumans.Y46SIRKOD, argumans.Y46ISERID, "1", ip, ip, argumans.Y46USER);
+
+            Logger.WriteInfo($"Brüt: {brut} dara: {dara} net: {net} başarıyla kayıt edildi.");
+            Application.Exit();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using PireksCihazEntegrasyonu.Args;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 
 namespace PireksCihazEntegrasyonu
 {
@@ -99,5 +101,20 @@ namespace PireksCihazEntegrasyonu
             }
         }
 
+        internal static string GetIP()
+        {
+            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        return ip.ToString();
+                    }
+                }
+            }
+
+            return "0.0.0.0";
+        }
     }
 }
