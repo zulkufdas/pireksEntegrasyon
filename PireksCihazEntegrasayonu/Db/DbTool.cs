@@ -18,7 +18,7 @@ namespace PireksCihazEntegrasyonu.Db
 
         public void InsertUrunTartim(float Y46Brut, float Y46Dara, float Y46Net, int Y46Sirkod, int Y46ISERID, string Y46ETGID, string Y46TYCIP, string Y46TSGPIP, string Y46USER)
         {
-            string insertSql = @"Insert Into VBARLIB.TARTIMF (Y46Sirkod,Y46ISERID,Y46TARYIL,Y46Brut,Y46Dara,Y46Net,Y46ETGID,Y46TYCIP,Y46TSGPIP,Y46GRDATE,Y46SENKRN,Y46USER)
+            string insertSql = @"Insert Into TARTIMF (Y46SIRKOD,Y46ISERID,Y46TARYIL,Y46BRUT,Y46DARA,Y46NET,Y46ETGID,Y46TYCIP,Y46TSGPIP,Y46GRDATE,Y46SENKRN,Y46GUSER)
                                 Values (@Y46Sirkod,@Y46ISERID,@Y46TARYIL,@Y46Brut,@Y46Dara,@Y46Net,@Y46ETGID,@Y46TYCIP,@Y46TSGPIP,GetDate(),0,@Y46USER)";
 
             using (var connection = GetConnection())
@@ -45,7 +45,7 @@ namespace PireksCihazEntegrasyonu.Db
 
         public void InsertAracTartim(int Y48SIRKOD, int Y48GCTUR, string Y48USER, string Y48HARNO, string Y48PLAKA, DateTime Y48HARTAR, string Y48KAPINO, int Y48GCAGIR)
         {
-            string insertSql = @"Insert Into VBARLIB.ARACTARTF (Y48SIRKOD,Y48GCTUR,Y48USER,Y48HARNO,Y48PLAKA,Y48HARTAR,Y48KAPINO,Y48GCAGIR,Y48GRDATE,Y48SENKRN)
+            string insertSql = @"Insert Into ARACTARTF (Y48SIRKOD,Y48GCTUR,Y48USER,Y48HARNO,Y48PLAKA,Y48HARTAR,Y48KAPINO,Y48GCAGIR,Y48GRDATE,Y48SENKRN)
                                 Values (@Y48SIRKOD,@Y48GCTUR,@Y48USER,@Y48HARNO,@Y48PLAKA,@Y48HARTAR,@Y48KAPINO,@Y48GCAGIR,GetDate(),0)";
 
             using (var connection = GetConnection())
