@@ -17,8 +17,15 @@ namespace PireksCihazEntegrasyonu.Devices
             Add(new DeviceMap
             {
                 Key = "TenaylarLoadLine3",
-                Name = "Tenaylar Load Line 3",
+                Name = "Tenaylar Load Line 3 Ürün Tartım",
                 UserControl = typeof(TunaylarLoadLine3UserControl)
+            });
+
+            Add(new DeviceMap
+            {
+                Key = "TenaylarLoadLine2",
+                Name = "Tenaylar Load Line 2 - Araç Tartım",
+                UserControl = typeof(TunaylarLoadLine2UserControl)
             });
         }
 

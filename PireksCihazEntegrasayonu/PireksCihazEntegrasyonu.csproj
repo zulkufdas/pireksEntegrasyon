@@ -72,12 +72,19 @@
     <Compile Include="Devices\Base\Configuration.cs" />
     <Compile Include="Devices\Base\SerialPortDevice.cs" />
     <Compile Include="Devices\DeviceMappings.cs" />
+    <Compile Include="Devices\TunaylarLoadLine2.cs" />
     <Compile Include="Devices\TunaylarLoadLine3.cs" />
     <Compile Include="DeviceUI\DeviceSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DeviceUI\DeviceSettingsForm.Designer.cs">
       <DependentUpon>DeviceSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceUI\TunaylarLoadLine2UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DeviceUI\TunaylarLoadLine2UserControl.Designer.cs">
+      <DependentUpon>TunaylarLoadLine2UserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="DeviceUI\TunaylarLoadLine3UserControl.cs">
       <SubType>UserControl</SubType>
@@ -102,6 +109,9 @@
     <Compile Include="Tools.cs" />
     <EmbeddedResource Include="DeviceUI\DeviceSettingsForm.resx">
       <DependentUpon>DeviceSettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceUI\TunaylarLoadLine2UserControl.resx">
+      <DependentUpon>TunaylarLoadLine2UserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeviceUI\TunaylarLoadLine3UserControl.resx">
       <DependentUpon>TunaylarLoadLine3UserControl.cs</DependentUpon>

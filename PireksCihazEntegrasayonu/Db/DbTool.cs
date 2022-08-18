@@ -43,7 +43,7 @@ namespace PireksCihazEntegrasyonu.Db
             }
         }
 
-        public void InsertAracTartim(int Y48SIRKOD, int Y48GCTUR, string Y48USER, string Y48HARNO, string Y48PLAKA, DateTime Y48HARTAR, string Y48KAPINO, int Y48GCAGIR)
+        public void InsertAracTartim(int Y48SIRKOD, int Y48GCTUR, string Y48USER, string Y48HARNO, string Y48PLAKA, DateTime Y48HARTAR, string Y48KAPINO, float Y48GCAGIR)
         {
             string insertSql = @"Insert Into ARACTARTF (Y48SIRKOD,Y48GCTUR,Y48USER,Y48HARNO,Y48PLAKA,Y48HARTAR,Y48KAPINO,Y48GCAGIR,Y48GRDATE,Y48SENKRN)
                                 Values (@Y48SIRKOD,@Y48GCTUR,@Y48USER,@Y48HARNO,@Y48PLAKA,@Y48HARTAR,@Y48KAPINO,@Y48GCAGIR,GetDate(),0)";

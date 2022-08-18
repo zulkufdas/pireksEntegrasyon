@@ -23,8 +23,14 @@ namespace PireksCihazEntegrasyonu
 
         private static void ArgumansWrapper(string[] args)
         {
-            var argumans = Tools.ArgumansWrap(args.FirstOrDefault());
-            ApplicationParams.Instance.SetArgumans(argumans);
+            try
+            {
+                var argumans = Tools.ArgumansWrap(args.FirstOrDefault());
+                ApplicationParams.Instance.SetArgumans(argumans);
+            }
+            catch (Exception ex) {
+                Logger.WriteError(ex);
+            }
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
