@@ -27,6 +27,13 @@ namespace PireksCihazEntegrasyonu.Devices
                 Name = "Tenaylar Load Line 2 - Araç Tartım",
                 UserControl = typeof(TunaylarLoadLine2UserControl)
             });
+
+            Add(new DeviceMap
+            {
+                Key = "HurayB2AB0066K",
+                Name = "Hüray B2 AB-0066-K",
+                UserControl = typeof(HurayB2AB0066KUserControl)
+            });
         }
 
         internal static DeviceMappings Instance { get; set; } = new Lazy<DeviceMappings>(() => new DeviceMappings()).Value;
