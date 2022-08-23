@@ -64,7 +64,7 @@ namespace PireksCihazEntegrasyonu.Db
                                         Y46TARYIL = @Y46TARYIL AND
                                         Y46ETGID = @Y46ETGID AND
                                         Y46SENKRN = 0 AND
-                                        Y46GUSER = @Y46GUSER
+                                        Y46USER = @Y46USER
                                 ";
 
             using (var connection = GetConnection())
