@@ -64,7 +64,7 @@ namespace PireksCihazEntegrasyonu.Db
                                         Y46TARYIL = @Y46TARYIL AND
                                         Y46ETGID = @Y46ETGID AND
                                         Y46SENKRN = 0 AND
-                                        Y46USER = @Y46USER
+                                        Y46GUSER = @Y46USER
                                 ";
 
             using (var connection = GetConnection())
@@ -73,12 +73,12 @@ namespace PireksCihazEntegrasyonu.Db
 
                 using (SqlCommand command = new SqlCommand(insertSql, connection))
                 {
-                    command.Parameters.Add(new SqlParameter("Y46Sirkod", Y46Sirkod));
+                    command.Parameters.Add(new SqlParameter("Y46SIRKOD", Y46Sirkod));
                     command.Parameters.Add(new SqlParameter("Y46ISERID", Y46ISERID));
                     command.Parameters.Add(new SqlParameter("Y46TARYIL", DateTime.Now.Year));
-                    command.Parameters.Add(new SqlParameter("Y46Brut", Y46Brut));
-                    command.Parameters.Add(new SqlParameter("Y46Dara", Y46Dara));
-                    command.Parameters.Add(new SqlParameter("Y46Net", Y46Net));
+                    command.Parameters.Add(new SqlParameter("Y46BRUT", Y46Brut));
+                    command.Parameters.Add(new SqlParameter("Y46DARA", Y46Dara));
+                    command.Parameters.Add(new SqlParameter("Y46NET", Y46Net));
                     command.Parameters.Add(new SqlParameter("Y46ETGID", Y46ETGID));
                     command.Parameters.Add(new SqlParameter("Y46TYCIP", Y46TYCIP));
                     command.Parameters.Add(new SqlParameter("Y46TSGPIP", Y46TSGPIP));
