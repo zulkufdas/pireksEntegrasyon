@@ -7,28 +7,37 @@ namespace PireksCihazEntegrasyonu
 {
     internal class Settings
     {
-        string settingFile = "DeviceSettings.json";
+        string settingFile = Path.Combine(System.Configuration.ConfigurationManager.AppSettings["DeviceSettingsPath"], "DeviceSettings.json");
         Settings()
         {
             LoadSettings();
         }
 
-        internal static Settings Instance { get;  } = new Lazy<Settings>(() => new Settings()).Value;
+        internal static Settings Instance { get; } = new Lazy<Settings>(() => new Settings()).Value;
 
         public Configuration Configuration { get; set; }
 
 
         void LoadSettings()
-        { try
+        {
+            try
             {
+                var path = Path.GetFullPath(settingFile);
+                if (Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
                 if (File.Exists(settingFile))
                 {
                     var jsonContent = File.ReadAllText(settingFile);
                     Configuration = Newtonsoft.Json.JsonConvert.DeserializeObject<Configuration>(jsonContent);
                 }
             }
-            finally {
-                if (Configuration == null) {
+            finally
+            {
+                if (Configuration == null)
+                {
                     Configuration = new Configuration();
                     Configuration.Settings = new Devices.Base.Configs.SerialDeviceConfig();
                 }
@@ -41,8 +50,10 @@ namespace PireksCihazEntegrasyonu
             File.WriteAllText(settingFile, configurationContent);
         }
 
-        public DeviceMap GetDeviceMap() {
-            if (Configuration != null) {
+        public DeviceMap GetDeviceMap()
+        {
+            if (Configuration != null)
+            {
                 DeviceMap deviceMap = DeviceMappings.Instance.GetDeviceMap(Configuration.DeviceKey);
                 return deviceMap;
             }

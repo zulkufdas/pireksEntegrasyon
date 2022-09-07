@@ -1,5 +1,6 @@
 ﻿using PireksCihazEntegrasyonu.Devices.Base.Configs;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PireksCihazEntegrasyonu.Devices.Base
@@ -25,7 +26,7 @@ namespace PireksCihazEntegrasyonu.Devices.Base
         {
             port = new SerialPort(Configurations.PortName, Configurations.BaudRate, Configurations.Parity, Configurations.DataBits);
             port.Open();
-            StartListen();
+            //StartListen();
         }
 
         void StartListen()
@@ -42,6 +43,27 @@ namespace PireksCihazEntegrasyonu.Devices.Base
                     }
                 }
             });
+        }
+
+        public string ReadData() {
+            if (port.IsOpen)
+            {
+                string message = string.Empty;
+                int say = 0;
+                while (!message.ToCharArray().Contains(SinyalListesi.CharSinyalListesi.EOT))
+                {
+                    var msg = port.ReadExisting();
+                    message += msg;
+                    say++;
+
+                    if (say > 20)
+                        break;
+                }
+
+                return message;
+            }
+
+            return string.Empty;
         }
 
         public override void Stop()
