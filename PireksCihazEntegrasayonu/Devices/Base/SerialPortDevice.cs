@@ -29,7 +29,7 @@ namespace PireksCihazEntegrasyonu.Devices.Base
             //StartListen();
         }
 
-        void StartListen()
+        public void StartListen()
         {
             listenerTask?.Dispose();
 
