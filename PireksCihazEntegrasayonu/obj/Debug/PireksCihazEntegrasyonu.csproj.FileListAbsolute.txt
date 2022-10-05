@@ -17,4 +17,3 @@ C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayon
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csproj.CopyComplete
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.exe
 C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.pdb
-C:\Users\Developer\source\repos\PireksCihazEntegrasayonu\PireksCihazEntegrasayonu\obj\Debug\PireksCihazEntegrasyonu.csprojAssemblyReference.cache

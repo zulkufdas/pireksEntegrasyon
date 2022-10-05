@@ -11,39 +11,49 @@ namespace PireksCihazEntegrasyonu.Devices
     {
         public event EventHandler<HurayB2AB0066KResult> Result;
         bool isDara = false;
-        string mainMessage = "";
+        //string mainMessage = "";
         public override void Receive(string message)
         {
             base.Receive(message);
 
-            mainMessage += message;
+           
+            //Logger.WriteInfo("Gelen Paket =>" + message);
 
-            var stxIndex = mainMessage.IndexOf(SinyalListesi.CharSinyalListesi.STX);
-            var etxIndex = mainMessage.IndexOf(SinyalListesi.CharSinyalListesi.ETX);
-            string sonuc = null;
-            if (stxIndex > -1 && etxIndex > -1)
-            {
-                var msg = mainMessage.Substring(stxIndex + 1, etxIndex - stxIndex);
-                sonuc = msg.Substring(25, 5);
-                sonuc = sonuc.Trim('0');
-                mainMessage = string.Empty;
+            if (message != null) {
+                var start = message.IndexOf('N');
+                var end = message.IndexOf('T',start);
+
+                if (start > -1 && end > -1) {
+                    var length = message.Substring(start, end)
+                        ?.Replace("N", "")
+                        ?.Replace("T", "")
+                        ?.Replace("kg","")
+                        ?.Replace(".",",")
+                        ?.TrimEnd('0')
+                        ?.TrimEnd(',');
+                    length = length.TrimEnd().TrimStart();
+
+                    Result?.Invoke(this, new HurayB2AB0066KResult
+                    {
+                        Sonuc = length,
+                        IsDara = isDara
+                    });
+                }
             }
-            else
-                return;
-
-            Result?.Invoke(this, new HurayB2AB0066KResult
-            {
-                Sonuc = sonuc,
-                IsDara = isDara
-            });
         }
 
         public void OkumayiBaslat(bool isDara)
         {
             this.isDara = isDara;
 
-            string sendText = Convert.ToChar(2).ToString() + Convert.ToChar(Convert.ToInt32("1")).ToString() + "DNG" + Convert.ToChar(13).ToString();
-            this.Send(sendText);
+            //string sendText = Convert.ToChar(2).ToString() + Convert.ToChar(Convert.ToInt32("1")).ToString() + "DNG" + Convert.ToChar(13).ToString();
+            //this.Send(sendText);
+        }
+
+        public override void Start()
+        {
+            base.Start();
+            StartListen();
         }
     }
 

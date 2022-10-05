@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonKaydet = new System.Windows.Forms.Button();
             this.buttonDaraKaydet = new System.Windows.Forms.Button();
             this.buttonTartimiKaydet = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -42,7 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelGenelNetToplamBilgi = new System.Windows.Forms.Label();
-            this.buttonKaydet = new System.Windows.Forms.Button();
+            this.buttonTemizle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -65,13 +66,14 @@
             this.label1.ForeColor = System.Drawing.Color.Teal;
             this.label1.Location = new System.Drawing.Point(22, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 25);
+            this.label1.Size = new System.Drawing.Size(231, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "HÜRAY B2 AB-0066-K";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.buttonKaydet);
+            this.panel2.Controls.Add(this.buttonTemizle);
             this.panel2.Controls.Add(this.buttonDaraKaydet);
             this.panel2.Controls.Add(this.buttonTartimiKaydet);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -80,18 +82,33 @@
             this.panel2.Size = new System.Drawing.Size(380, 57);
             this.panel2.TabIndex = 1;
             // 
+            // buttonKaydet
+            // 
+            this.buttonKaydet.BackColor = System.Drawing.Color.DarkKhaki;
+            this.buttonKaydet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonKaydet.ForeColor = System.Drawing.Color.White;
+            this.buttonKaydet.Location = new System.Drawing.Point(195, 0);
+            this.buttonKaydet.Name = "buttonKaydet";
+            this.buttonKaydet.Size = new System.Drawing.Size(185, 57);
+            this.buttonKaydet.TabIndex = 2;
+            this.buttonKaydet.Text = "Kaydet";
+            this.buttonKaydet.UseVisualStyleBackColor = false;
+            this.buttonKaydet.Click += new System.EventHandler(this.buttonKaydet_Click);
+            // 
             // buttonDaraKaydet
             // 
             this.buttonDaraKaydet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonDaraKaydet.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonDaraKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.buttonDaraKaydet.ForeColor = System.Drawing.Color.White;
-            this.buttonDaraKaydet.Location = new System.Drawing.Point(123, 0);
+            this.buttonDaraKaydet.Location = new System.Drawing.Point(56, 0);
             this.buttonDaraKaydet.Name = "buttonDaraKaydet";
-            this.buttonDaraKaydet.Size = new System.Drawing.Size(141, 57);
+            this.buttonDaraKaydet.Size = new System.Drawing.Size(57, 57);
             this.buttonDaraKaydet.TabIndex = 0;
             this.buttonDaraKaydet.Text = "Dara Oku";
             this.buttonDaraKaydet.UseVisualStyleBackColor = false;
+            this.buttonDaraKaydet.Visible = false;
             this.buttonDaraKaydet.Click += new System.EventHandler(this.buttonDaraKaydet_Click);
             // 
             // buttonTartimiKaydet
@@ -102,10 +119,11 @@
             this.buttonTartimiKaydet.ForeColor = System.Drawing.Color.White;
             this.buttonTartimiKaydet.Location = new System.Drawing.Point(0, 0);
             this.buttonTartimiKaydet.Name = "buttonTartimiKaydet";
-            this.buttonTartimiKaydet.Size = new System.Drawing.Size(123, 57);
+            this.buttonTartimiKaydet.Size = new System.Drawing.Size(56, 57);
             this.buttonTartimiKaydet.TabIndex = 1;
             this.buttonTartimiKaydet.Text = "Brüt Oku";
             this.buttonTartimiKaydet.UseVisualStyleBackColor = false;
+            this.buttonTartimiKaydet.Visible = false;
             this.buttonTartimiKaydet.Click += new System.EventHandler(this.buttonTartimiKaydet_Click);
             // 
             // tableLayoutPanel1
@@ -231,19 +249,19 @@
             this.labelGenelNetToplamBilgi.Text = "0,00 KG.";
             this.labelGenelNetToplamBilgi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonKaydet
+            // buttonTemizle
             // 
-            this.buttonKaydet.BackColor = System.Drawing.Color.DarkKhaki;
-            this.buttonKaydet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonKaydet.ForeColor = System.Drawing.Color.White;
-            this.buttonKaydet.Location = new System.Drawing.Point(264, 0);
-            this.buttonKaydet.Name = "buttonKaydet";
-            this.buttonKaydet.Size = new System.Drawing.Size(116, 57);
-            this.buttonKaydet.TabIndex = 2;
-            this.buttonKaydet.Text = "Kaydet";
-            this.buttonKaydet.UseVisualStyleBackColor = false;
-            this.buttonKaydet.Click += new System.EventHandler(this.buttonKaydet_Click);
+            this.buttonTemizle.BackColor = System.Drawing.Color.YellowGreen;
+            this.buttonTemizle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonTemizle.ForeColor = System.Drawing.Color.White;
+            this.buttonTemizle.Location = new System.Drawing.Point(113, 0);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(82, 57);
+            this.buttonTemizle.TabIndex = 3;
+            this.buttonTemizle.Text = "Temizle";
+            this.buttonTemizle.UseVisualStyleBackColor = false;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
             // HurayB2AB0066KUserControl
             // 
@@ -282,5 +300,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelGenelNetToplamBilgi;
         private System.Windows.Forms.Button buttonKaydet;
+        private System.Windows.Forms.Button buttonTemizle;
     }
 }

@@ -40,7 +40,8 @@ namespace PireksCihazEntegrasyonu.DeviceUI
         {
             this.Invoke(new Action(() =>
             {
-                if (e.IsDara)
+                //if (e.IsDara)
+                if(string.IsNullOrEmpty(textBoxDara.Text) || textBoxDara.Text == "0")
                     textBoxDara.Text = e.Sonuc;
                 else
                     textBoxBrut.Text = e.Sonuc;
@@ -113,6 +114,11 @@ namespace PireksCihazEntegrasyonu.DeviceUI
 
             Logger.WriteInfo($"Brüt: {brut} dara: {dara} net: {net} başarıyla kayıt edildi.");
             Application.Exit();
+        }
+
+        private void buttonTemizle_Click(object sender, EventArgs e)
+        {
+            textBoxBrut.Text = textBoxDara.Text = textBoxNet.Text = "0";
         }
     }
 }
