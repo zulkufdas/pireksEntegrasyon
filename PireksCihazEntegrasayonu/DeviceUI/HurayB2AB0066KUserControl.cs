@@ -40,8 +40,7 @@ namespace PireksCihazEntegrasyonu.DeviceUI
         {
             this.Invoke(new Action(() =>
             {
-                //if (e.IsDara)
-                if(string.IsNullOrEmpty(textBoxDara.Text) || textBoxDara.Text == "0")
+                if((string.IsNullOrEmpty(textBoxDara.Text) || textBoxDara.Text == "0") && textBoxDara.Visible)
                     textBoxDara.Text = e.Sonuc;
                 else
                     textBoxBrut.Text = e.Sonuc;
@@ -53,16 +52,6 @@ namespace PireksCihazEntegrasyonu.DeviceUI
         {
             Device?.Stop();
             base.DestroyHandle();
-        }
-
-        private void buttonDaraKaydet_Click(object sender, EventArgs e)
-        {
-            Device?.OkumayiBaslat(true);
-        }
-
-        private void buttonTartimiKaydet_Click(object sender, EventArgs e)
-        {
-            Device?.OkumayiBaslat(false);
         }
 
         private void textBoxBrut_TextChanged(object sender, EventArgs e)
@@ -119,6 +108,23 @@ namespace PireksCihazEntegrasyonu.DeviceUI
         private void buttonTemizle_Click(object sender, EventArgs e)
         {
             textBoxBrut.Text = textBoxDara.Text = textBoxNet.Text = "0";
+        }
+
+        const string brutOkuCaption = "Sadece Brüt Oku";
+        const string tumunuOkuCaption = "Dara ve Brüt Oku";
+        private void buttonSadeceBrutOku_Click(object sender, EventArgs e)
+        {
+            textBoxDara.Visible = labelDara.Visible = !(buttonSadeceBrutOku.Text == brutOkuCaption);
+
+            if (textBoxDara.Visible)
+            {
+                buttonSadeceBrutOku.Text = brutOkuCaption;
+                buttonSadeceBrutOku.BackColor = Color.CornflowerBlue;
+            }
+            else {
+                buttonSadeceBrutOku.Text = tumunuOkuCaption;
+                buttonSadeceBrutOku.BackColor = Color.Plum;
+            }
         }
     }
 }

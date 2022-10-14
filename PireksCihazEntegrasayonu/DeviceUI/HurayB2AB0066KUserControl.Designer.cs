@@ -32,18 +32,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonKaydet = new System.Windows.Forms.Button();
-            this.buttonDaraKaydet = new System.Windows.Forms.Button();
-            this.buttonTartimiKaydet = new System.Windows.Forms.Button();
+            this.buttonTemizle = new System.Windows.Forms.Button();
+            this.buttonSadeceBrutOku = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxNet = new System.Windows.Forms.TextBox();
             this.textBoxDara = new System.Windows.Forms.TextBox();
             this.textBoxBrut = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelDara = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelGenelNetToplamBilgi = new System.Windows.Forms.Label();
-            this.buttonTemizle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -73,9 +72,8 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.buttonKaydet);
+            this.panel2.Controls.Add(this.buttonSadeceBrutOku);
             this.panel2.Controls.Add(this.buttonTemizle);
-            this.panel2.Controls.Add(this.buttonDaraKaydet);
-            this.panel2.Controls.Add(this.buttonTartimiKaydet);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 203);
             this.panel2.Name = "panel2";
@@ -96,35 +94,33 @@
             this.buttonKaydet.UseVisualStyleBackColor = false;
             this.buttonKaydet.Click += new System.EventHandler(this.buttonKaydet_Click);
             // 
-            // buttonDaraKaydet
+            // buttonTemizle
             // 
-            this.buttonDaraKaydet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.buttonDaraKaydet.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonDaraKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonDaraKaydet.ForeColor = System.Drawing.Color.White;
-            this.buttonDaraKaydet.Location = new System.Drawing.Point(56, 0);
-            this.buttonDaraKaydet.Name = "buttonDaraKaydet";
-            this.buttonDaraKaydet.Size = new System.Drawing.Size(57, 57);
-            this.buttonDaraKaydet.TabIndex = 0;
-            this.buttonDaraKaydet.Text = "Dara Oku";
-            this.buttonDaraKaydet.UseVisualStyleBackColor = false;
-            this.buttonDaraKaydet.Visible = false;
-            this.buttonDaraKaydet.Click += new System.EventHandler(this.buttonDaraKaydet_Click);
+            this.buttonTemizle.BackColor = System.Drawing.Color.YellowGreen;
+            this.buttonTemizle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonTemizle.ForeColor = System.Drawing.Color.White;
+            this.buttonTemizle.Location = new System.Drawing.Point(0, 0);
+            this.buttonTemizle.Name = "buttonTemizle";
+            this.buttonTemizle.Size = new System.Drawing.Size(82, 57);
+            this.buttonTemizle.TabIndex = 3;
+            this.buttonTemizle.Text = "Temizle";
+            this.buttonTemizle.UseVisualStyleBackColor = false;
+            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
             // 
-            // buttonTartimiKaydet
+            // buttonSadeceBrutOku
             // 
-            this.buttonTartimiKaydet.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.buttonTartimiKaydet.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonTartimiKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonTartimiKaydet.ForeColor = System.Drawing.Color.White;
-            this.buttonTartimiKaydet.Location = new System.Drawing.Point(0, 0);
-            this.buttonTartimiKaydet.Name = "buttonTartimiKaydet";
-            this.buttonTartimiKaydet.Size = new System.Drawing.Size(56, 57);
-            this.buttonTartimiKaydet.TabIndex = 1;
-            this.buttonTartimiKaydet.Text = "Brüt Oku";
-            this.buttonTartimiKaydet.UseVisualStyleBackColor = false;
-            this.buttonTartimiKaydet.Visible = false;
-            this.buttonTartimiKaydet.Click += new System.EventHandler(this.buttonTartimiKaydet_Click);
+            this.buttonSadeceBrutOku.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.buttonSadeceBrutOku.Dock = System.Windows.Forms.DockStyle.Left;
+            this.buttonSadeceBrutOku.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonSadeceBrutOku.ForeColor = System.Drawing.Color.White;
+            this.buttonSadeceBrutOku.Location = new System.Drawing.Point(82, 0);
+            this.buttonSadeceBrutOku.Name = "buttonSadeceBrutOku";
+            this.buttonSadeceBrutOku.Size = new System.Drawing.Size(113, 57);
+            this.buttonSadeceBrutOku.TabIndex = 1;
+            this.buttonSadeceBrutOku.Text = "Sadece Brüt Oku";
+            this.buttonSadeceBrutOku.UseVisualStyleBackColor = false;
+            this.buttonSadeceBrutOku.Click += new System.EventHandler(this.buttonSadeceBrutOku_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -135,7 +131,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxDara, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxBrut, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelDara, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 67);
@@ -201,17 +197,17 @@
             this.label2.Text = "BRÜT";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // labelDara
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label3.Font = new System.Drawing.Font("Mangal", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(95, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 40);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "DARA";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDara.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelDara.Font = new System.Drawing.Font("Mangal", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelDara.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelDara.Location = new System.Drawing.Point(95, 41);
+            this.labelDara.Name = "labelDara";
+            this.labelDara.Size = new System.Drawing.Size(100, 40);
+            this.labelDara.TabIndex = 7;
+            this.labelDara.Text = "DARA";
+            this.labelDara.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -249,20 +245,6 @@
             this.labelGenelNetToplamBilgi.Text = "0,00 KG.";
             this.labelGenelNetToplamBilgi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonTemizle
-            // 
-            this.buttonTemizle.BackColor = System.Drawing.Color.YellowGreen;
-            this.buttonTemizle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonTemizle.ForeColor = System.Drawing.Color.White;
-            this.buttonTemizle.Location = new System.Drawing.Point(113, 0);
-            this.buttonTemizle.Name = "buttonTemizle";
-            this.buttonTemizle.Size = new System.Drawing.Size(82, 57);
-            this.buttonTemizle.TabIndex = 3;
-            this.buttonTemizle.Text = "Temizle";
-            this.buttonTemizle.UseVisualStyleBackColor = false;
-            this.buttonTemizle.Click += new System.EventHandler(this.buttonTemizle_Click);
-            // 
             // HurayB2AB0066KUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,10 +275,9 @@
         private System.Windows.Forms.TextBox textBoxDara;
         private System.Windows.Forms.TextBox textBoxBrut;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelDara;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button buttonDaraKaydet;
-        private System.Windows.Forms.Button buttonTartimiKaydet;
+        private System.Windows.Forms.Button buttonSadeceBrutOku;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelGenelNetToplamBilgi;
         private System.Windows.Forms.Button buttonKaydet;

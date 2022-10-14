@@ -63,8 +63,7 @@ namespace PireksCihazEntegrasyonu.Db
                                         Y46ISERID = @Y46ISERID AND
                                         Y46TARYIL = @Y46TARYIL AND
                                         Y46ETGID = @Y46ETGID AND
-                                        Y46SENKRN = 0 AND
-                                        Y46GUSER = @Y46USER
+                                        Y46SENKRN = 0
                                 ";
 
             using (var connection = GetConnection())
@@ -127,7 +126,6 @@ namespace PireksCihazEntegrasyonu.Db
                                     Y48GRDATE = GetDate()
                                 Where 
                                     Y48SIRKOD = @Y48SIRKOD AND
-                                    Y48USER = @Y48USER AND
                                     Y48HARTAR = @Y48HARTAR AND
                                     Y48GCTUR = @Y48GCTUR AND
                                     Y48HARNO = @Y48HARNO AND
