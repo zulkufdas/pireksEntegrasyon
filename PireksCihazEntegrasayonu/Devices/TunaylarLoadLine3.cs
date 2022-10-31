@@ -26,8 +26,11 @@ namespace PireksCihazEntegrasyonu.Devices
             if (stxIndex > -1 && etxIndex > -1)
             {
                 var msg = mainMessage.Substring(stxIndex + 1, etxIndex - stxIndex);
-                sonuc = msg.Substring(25, 5);
-                sonuc = sonuc.Trim('0');
+                Logger.WriteInfo("Full Gelen Paket =>" + message);
+                sonuc = msg.Substring(25, 10);
+                sonuc = sonuc.Insert(5, ",");
+                //sonuc = msg.Substring(25, 5);
+                sonuc = sonuc.Trim('0').Trim(',');
                 mainMessage = string.Empty;
             }
             else
@@ -60,7 +63,7 @@ namespace PireksCihazEntegrasyonu.Devices
             {
                 var message = this.ReadData();
 
-                Logger.WriteInfo("Gelen Paket =>" + message);
+                Logger.WriteInfo("Gelen Paket 2 =>" + message);
 
                 var stxIndex = mainMessage.IndexOf(SinyalListesi.CharSinyalListesi.STX);
                 var etxIndex = mainMessage.IndexOf(SinyalListesi.CharSinyalListesi.ETX);
@@ -68,8 +71,11 @@ namespace PireksCihazEntegrasyonu.Devices
                 if (stxIndex > -1 && etxIndex > -1)
                 {
                     var msg = mainMessage.Substring(stxIndex + 1, etxIndex - stxIndex);
-                    sonuc = msg.Substring(25, 5);
-                    sonuc = sonuc.Trim('0');
+                    Logger.WriteInfo("Full Gelen Paket =>" + message);
+                    sonuc = msg.Substring(25, 10);
+                    sonuc = sonuc.Insert(5, ",");
+                    //sonuc = msg.Substring(25, 5);
+                    sonuc = sonuc.Trim('0').Trim(',');
                     mainMessage = string.Empty;
                 }
                 else
